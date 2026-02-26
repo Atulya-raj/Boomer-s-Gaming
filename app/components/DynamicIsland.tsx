@@ -1,0 +1,89 @@
+'use client';
+
+import React, { useState } from 'react';
+
+const DynamicIsland = () => {
+    const [isExpanded, setIsExpanded] = useState(false);
+    const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
+
+    const scrollTo = (id: string) => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+            setIsExpanded(false);
+        }
+    };
+
+    return (
+        <div className="fixed top-6 left-1/2 -translate-x-1/2 z-[100] flex justify-center w-full max-w-[90vw] md:max-w-md pointer-events-none">
+            <div
+                onMouseEnter={() => setIsExpanded(true)}
+                onMouseLeave={() => setIsExpanded(false)}
+                onClick={() => setIsExpanded(!isExpanded)}
+                className={`
+                    relative overflow-hidden cursor-pointer pointer-events-auto
+                    transition-all duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)]
+                    bg-black/90 backdrop-blur-xl border border-white/10
+                    shadow-[0_10px_40px_-10px_rgba(0,0,0,0.8)] rounded-[32px]
+                    ${isExpanded ? 'w-full md:w-96' : 'w-32 md:w-40 delay-100'}
+                `}
+                style={{ height: isExpanded ? '230px' : '40px' }}
+            >
+                {/* Collapsed Content */}
+                <div
+                    className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${isExpanded ? 'opacity-0 pointer-events-none' : 'opacity-100 delay-300'}`}
+                >
+                    <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></div>
+                        <span className="text-xs font-semibold tracking-widest text-white/90">BOOMER'S</span>
+                    </div>
+                </div>
+
+                {/* Expanded Content */}
+                <div
+                    className={`absolute inset-0 p-6 flex flex-col transition-all duration-300 ${isExpanded ? 'opacity-100 delay-200 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'}`}
+                >
+                    <div className="flex justify-between items-center mb-4">
+                        <span className="text-white/50 text-[10px] sm:text-xs font-bold tracking-widest uppercase">Select Region</span>
+                        <div className="flex gap-2">
+                            <button
+                                onClick={(e) => { e.stopPropagation(); setSelectedRegion('Pune'); }}
+                                className={`px-2 py-1 rounded-full text-[10px] sm:text-xs font-bold transition-all ${selectedRegion === 'Pune' ? 'bg-cyan-500 text-black scale-105' : 'bg-white/10 text-white hover:bg-white/20'}`}
+                            >
+                                PUNE
+                            </button>
+                            <button
+                                onClick={(e) => { e.stopPropagation(); setSelectedRegion('Coimbatore'); }}
+                                className={`px-2 py-1 rounded-full text-[10px] sm:text-xs font-bold transition-all ${selectedRegion === 'Coimbatore' ? 'bg-cyan-500 text-black scale-105' : 'bg-white/10 text-white hover:bg-white/20'}`}
+                            >
+                                COMBAITORE
+                            </button>
+                        </div>
+                    </div>
+
+                    <span className="text-white/50 text-[10px] sm:text-xs font-bold tracking-widest uppercase mb-3">Jump To Section</span>
+
+                    <div className="grid grid-cols-2 gap-2">
+                        <button onClick={(e) => { e.stopPropagation(); scrollTo('gaming'); }} className="bg-white/5 hover:bg-white/10 border border-white/5 hover:border-cyan-500/30 rounded-xl p-2 sm:p-3 flex flex-col items-start transition-all group">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-cyan-400 mb-2 group-hover:scale-110 transition-transform hidden sm:block"><circle cx="12" cy="12" r="10" /><line x1="22" y1="12" x2="18" y2="12" /><line x1="6" y1="12" x2="2" y2="12" /><line x1="12" y1="6" x2="12" y2="2" /><line x1="12" y1="22" x2="12" y2="18" /></svg>
+                            <span className="text-white text-xs font-bold group-hover:text-cyan-400 transition-colors">Arsenal</span>
+                        </button>
+                        <button onClick={(e) => { e.stopPropagation(); scrollTo('food'); }} className="bg-white/5 hover:bg-white/10 border border-white/5 hover:border-pink-500/30 rounded-xl p-2 sm:p-3 flex flex-col items-start transition-all group">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-pink-400 mb-2 group-hover:scale-110 transition-transform hidden sm:block"><path d="M17 8h1a4 4 0 1 1 0 8h-1" /><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z" /><line x1="6" y1="2" x2="6" y2="4" /><line x1="10" y1="2" x2="10" y2="4" /><line x1="14" y1="2" x2="14" y2="4" /></svg>
+                            <span className="text-white text-xs font-bold group-hover:text-pink-400 transition-colors">Cafe</span>
+                        </button>
+                        <button onClick={(e) => { e.stopPropagation(); scrollTo('party'); }} className="bg-white/5 hover:bg-white/10 border border-white/5 hover:border-purple-500/30 rounded-xl p-2 sm:p-3 flex items-center justify-between transition-all group col-span-2">
+                            <div className="flex items-center gap-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-purple-400 group-hover:scale-110 transition-transform"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+                                <span className="text-white text-xs font-bold group-hover:text-purple-400 transition-colors">Book a Party</span>
+                            </div>
+                            <span className="text-purple-400 text-xs opacity-0 group-hover:opacity-100 transition-opacity translate-x-[-10px] group-hover:translate-x-0 duration-300">→</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default DynamicIsland;
