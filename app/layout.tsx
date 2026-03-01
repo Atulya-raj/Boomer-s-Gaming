@@ -3,6 +3,7 @@ import { Outfit } from "next/font/google";
 import "./globals.css";
 
 import { ReactLenis } from 'lenis/react';
+import DynamicIsland from "./components/DynamicIsland";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -25,6 +26,7 @@ export default function RootLayout({
         className={`${outfit.variable} antialiased bg-black text-white overflow-x-hidden`}
       >
         <ReactLenis root>
+          <DynamicIsland />
           {children}
         </ReactLenis>
       </body>

@@ -1,21 +1,37 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useRouter, usePathname } from 'next/navigation';
 
 const DynamicIsland = () => {
     const [isExpanded, setIsExpanded] = useState(false);
     const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
+    const router = useRouter();
+    const pathname = usePathname();
 
     const scrollTo = (id: string) => {
-        const element = document.getElementById(id);
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-            setIsExpanded(false);
+        setIsExpanded(false);
+        if (pathname !== '/') {
+            router.push(`/#${id}`);
+        } else {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    };
+
+    const scrollToTop = () => {
+        setIsExpanded(false);
+        if (pathname !== '/') {
+            router.push('/');
+        } else {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     };
 
     return (
-        <div className="fixed top-6 left-1/2 -translate-x-1/2 z-[100] flex justify-center w-full max-w-[90vw] md:max-w-md pointer-events-none">
+        <div className="fixed top-6 left-1/2 -translate-x-1/2 z-[100] flex justify-center w-full max-w-[95vw] md:max-w-2xl pointer-events-none">
             <div
                 onMouseEnter={() => setIsExpanded(true)}
                 onMouseLeave={() => setIsExpanded(false)}
@@ -25,9 +41,9 @@ const DynamicIsland = () => {
                     transition-all duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)]
                     bg-black/90 backdrop-blur-xl border border-white/10
                     shadow-[0_10px_40px_-10px_rgba(0,0,0,0.8)] rounded-[32px]
-                    ${isExpanded ? 'w-full md:w-96' : 'w-32 md:w-40 delay-100'}
+                    ${isExpanded ? 'w-full md:w-[480px]' : 'w-32 md:w-40 delay-100'}
                 `}
-                style={{ height: isExpanded ? '230px' : '40px' }}
+                style={{ height: isExpanded ? '280px' : '40px' }}
             >
                 {/* Collapsed Content */}
                 <div
@@ -72,12 +88,21 @@ const DynamicIsland = () => {
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-pink-400 mb-2 group-hover:scale-110 transition-transform hidden sm:block"><path d="M17 8h1a4 4 0 1 1 0 8h-1" /><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z" /><line x1="6" y1="2" x2="6" y2="4" /><line x1="10" y1="2" x2="10" y2="4" /><line x1="14" y1="2" x2="14" y2="4" /></svg>
                             <span className="text-white text-xs font-bold group-hover:text-pink-400 transition-colors">Cafe</span>
                         </button>
-                        <button onClick={(e) => { e.stopPropagation(); scrollTo('party'); }} className="bg-white/5 hover:bg-white/10 border border-white/5 hover:border-purple-500/30 rounded-xl p-2 sm:p-3 flex items-center justify-between transition-all group col-span-2">
-                            <div className="flex items-center gap-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-purple-400 group-hover:scale-110 transition-transform"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
-                                <span className="text-white text-xs font-bold group-hover:text-purple-400 transition-colors">Book a Party</span>
-                            </div>
-                            <span className="text-purple-400 text-xs opacity-0 group-hover:opacity-100 transition-opacity translate-x-[-10px] group-hover:translate-x-0 duration-300">→</span>
+                        <button onClick={(e) => { e.stopPropagation(); scrollTo('events'); }} className="bg-white/5 hover:bg-white/10 border border-white/5 hover:border-purple-500/30 rounded-xl p-2 sm:p-3 flex flex-col items-start transition-all group">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-purple-400 mb-2 group-hover:scale-110 transition-transform hidden sm:block"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+                            <span className="text-white text-xs font-bold group-hover:text-purple-400 transition-colors">Book a Party</span>
+                        </button>
+                        <button onClick={(e) => { e.stopPropagation(); scrollTo('merch'); }} className="bg-white/5 hover:bg-white/10 border border-white/5 hover:border-emerald-500/30 rounded-xl p-2 sm:p-3 flex flex-col items-start transition-all group">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-emerald-400 mb-2 group-hover:scale-110 transition-transform hidden sm:block"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" /><path d="M3 6h18" /><path d="M16 10a4 4 0 0 1-8 0" /></svg>
+                            <span className="text-white text-xs font-bold group-hover:text-emerald-400 transition-colors">Buy Merch</span>
+                        </button>
+
+                        {/* Back to Top */}
+                        <button onClick={(e) => { e.stopPropagation(); scrollToTop(); }} className="bg-white/5 hover:bg-white/10 border border-white/5 hover:border-white/30 rounded-xl p-2 sm:p-3 flex items-center justify-center transition-all group col-span-2 mt-1">
+                            <span className="text-white/60 text-xs font-bold group-hover:text-white transition-colors flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:-translate-y-1 transition-transform"><path d="m18 15-6-6-6 6" /></svg>
+                                Back to Top
+                            </span>
                         </button>
                     </div>
                 </div>

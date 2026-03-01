@@ -8,7 +8,6 @@ import FoodSection from "./components/sections/FoodSection";
 import EventSection from "./components/sections/EventSection";
 import MerchSection from "./components/sections/MerchSection";
 import FooterSection from "./components/sections/FooterSection";
-import DynamicIsland from "./components/DynamicIsland";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -22,8 +21,6 @@ export default function Home() {
       {
         !isLoading && (
           <div className="flex flex-col w-full relative">
-            <DynamicIsland />
-
             {/* 1. Landing (Photo 1) */}
             <LandingSection />
 
