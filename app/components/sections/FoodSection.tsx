@@ -3,12 +3,21 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
+import Link from 'next/link';
 
 gsap.registerPlugin(ScrollTrigger);
+
+// Placeholder images for the gallery — user will provide real ones later
+const cafeGalleryImages = [
+    { src: "/images/food.jpeg", alt: "Cafe ambiance" },
+    { src: "/images/food.jpeg", alt: "Signature dishes" },
+    { src: "/images/food.jpeg", alt: "Fresh beverages" },
+];
 
 const FoodSection = () => {
     const containerRef = useRef<HTMLDivElement>(null);
     const contentRef = useRef<HTMLDivElement>(null);
+    const galleryRef = useRef<HTMLDivElement>(null);
 
     useGSAP(() => {
         const tl = gsap.timeline({
@@ -24,6 +33,24 @@ const FoodSection = () => {
             { scale: 0.9, opacity: 0 },
             { scale: 1, opacity: 1, duration: 1.2, ease: "power3.out" }
         );
+
+        // Stagger the gallery images
+        if (galleryRef.current) {
+            gsap.fromTo(galleryRef.current.children,
+                { y: 30, opacity: 0 },
+                {
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.7,
+                    stagger: 0.15,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: galleryRef.current,
+                        start: "top 85%",
+                    }
+                }
+            );
+        }
 
     }, { scope: containerRef });
 
@@ -53,20 +80,37 @@ const FoodSection = () => {
                         <p className="text-lg text-gray-300 mb-8 max-w-md mx-auto md:mx-0">
                             Level up your energy. From signature mocktails to loaded nachos, our Zomato District certified menu keeps you in the game without hitting pause.
                         </p>
-                        <button className="px-8 py-4 bg-gradient-to-r from-pink-500 hover:from-pink-600 to-orange-500 hover:to-orange-600 text-white font-bold rounded-full transition-transform hover:scale-105 active:scale-95 shadow-lg shadow-pink-500/30">
-                            VIEW MENU
-                        </button>
+                        <Link href="/cafe-menu">
+                            <button className="px-8 py-4 bg-gradient-to-r from-pink-500 hover:from-pink-600 to-orange-500 hover:to-orange-600 text-white font-bold rounded-full transition-transform hover:scale-105 active:scale-95 shadow-lg shadow-pink-500/30">
+                                VIEW MENU
+                            </button>
+                        </Link>
                     </div>
 
-                    <div className="flex-1 w-full aspect-square md:aspect-[4/3] relative rounded-2xl overflow-hidden border border-white/5 shadow-2xl">
-                        {/* Mini showcase inside card - using same image or a different food close up if provided */}
-                        <Image
-                            src="/images/food.jpeg"
-                            alt="Delicious gaming snacks"
-                            fill
-                            className="object-cover hover:scale-110 transition-transform duration-700"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-tr from-pink-500/20 to-transparent pointer-events-none hover:opacity-0 transition-opacity duration-300"></div>
+                    {/* Mini Gallery inside card */}
+                    <div ref={galleryRef} className="flex-1 w-full grid grid-cols-2 gap-3">
+                        {/* Large featured image */}
+                        <div className="col-span-2 relative aspect-[16/9] rounded-2xl overflow-hidden border border-white/5 shadow-2xl group">
+                            <Image
+                                src={cafeGalleryImages[0].src}
+                                alt={cafeGalleryImages[0].alt}
+                                fill
+                                className="object-cover group-hover:scale-110 transition-transform duration-700"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-tr from-pink-500/20 to-transparent pointer-events-none group-hover:opacity-0 transition-opacity duration-300"></div>
+                        </div>
+                        {/* Two smaller images */}
+                        {cafeGalleryImages.slice(1).map((img, i) => (
+                            <div key={i} className="relative aspect-square rounded-xl overflow-hidden border border-white/5 shadow-xl group">
+                                <Image
+                                    src={img.src}
+                                    alt={img.alt}
+                                    fill
+                                    className="object-cover group-hover:scale-110 transition-transform duration-700"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-tr from-pink-500/15 to-transparent pointer-events-none group-hover:opacity-0 transition-opacity duration-300"></div>
+                            </div>
+                        ))}
                     </div>
 
                 </div>
