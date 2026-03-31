@@ -28,7 +28,7 @@ const RefuelSection = () => {
     }, { scope: containerRef });
 
     return (
-        <section ref={containerRef} className="w-full flex flex-col items-center justify-center p-8 pointer-events-auto">
+        <section id="refuel" ref={containerRef} className="w-full flex flex-col items-center justify-center p-8 pointer-events-auto">
             <h2
                 ref={titleRef}
                 className="text-5xl md:text-8xl font-black text-orange-500 mb-12 mix-blend-difference text-center"

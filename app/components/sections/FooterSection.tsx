@@ -73,7 +73,7 @@ const FooterSection = () => {
                         <h4 className="text-white font-bold mb-2 tracking-wider">CONNECT</h4>
                         <div className="flex flex-col gap-2">
                             <a href="#" className="hover:text-pink-500 transition-colors">Instagram</a>
-                            <a href="#" className="hover:text-blue-400 transition-colors">Twitter</a>
+                            <a href="#" className="hover:text-red-500 transition-colors">YouTube</a>
                             <a href="#" className="hover:text-indigo-400 transition-colors">Discord</a>
                         </div>
                     </div>

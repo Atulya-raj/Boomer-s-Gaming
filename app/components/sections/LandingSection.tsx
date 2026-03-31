@@ -3,7 +3,13 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import Image from 'next/image';
 
-const LandingSection = () => {
+import { Location } from '../../context/LocationContext';
+
+interface LandingSectionProps {
+    location?: Location;
+}
+
+const LandingSection = ({ location }: LandingSectionProps) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const titleRef = useRef<HTMLHeadingElement>(null);
     const subtitleRef = useRef<HTMLParagraphElement>(null);
@@ -88,18 +94,20 @@ const LandingSection = () => {
                     </p>
                 </div>
 
-                {/* Location Trailers Grid */}
-                <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-12 w-full max-w-6xl mx-auto">
-
-                    {/* Pune Trailer Card */}
-                    <div className="group relative rounded-2xl md:rounded-3xl overflow-hidden backdrop-blur-md bg-white/5 border border-white/10 shadow-[0_0_30px_rgba(34,211,238,0.1)] transition-all duration-500 hover:shadow-[0_0_50px_rgba(34,211,238,0.25)] hover:border-cyan-400/50 hover:-translate-y-2">
-                        {/* Video Overlay Gradient to ensure text is readable */}
+                {/* Location Trailer — shows only the selected location */}
+                <div ref={cardsRef} className="w-full max-w-5xl mx-auto">
+                    <div className={`group relative rounded-2xl md:rounded-3xl overflow-hidden backdrop-blur-md bg-white/5 border transition-all duration-500 hover:-translate-y-1 ${
+                        location === 'pune'
+                            ? 'border-cyan-500/30 shadow-[0_0_40px_rgba(34,211,238,0.15)] hover:shadow-[0_0_60px_rgba(34,211,238,0.3)] hover:border-cyan-400/60'
+                            : 'border-purple-500/30 shadow-[0_0_40px_rgba(168,85,247,0.15)] hover:shadow-[0_0_60px_rgba(168,85,247,0.3)] hover:border-purple-400/60'
+                    }`}>
+                        {/* Video Overlay Gradient */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent z-10 transition-opacity duration-500 group-hover:opacity-70"></div>
 
                         {/* The Video Element */}
                         <video
                             src="https://www.w3schools.com/html/mov_bbb.mp4"
-                            className="w-full h-full object-cover aspect-video md:aspect-[16/10] opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
+                            className="w-full h-full object-cover aspect-video md:aspect-[21/9] opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
                             autoPlay
                             muted
                             loop
@@ -108,41 +116,29 @@ const LandingSection = () => {
                         />
 
                         {/* Title and Overlay Info */}
-                        <div className="absolute bottom-6 md:bottom-8 left-6 md:left-8 z-20 transform transition-all duration-500 group-hover:translate-x-2 group-hover:-translate-y-1">
-                            <div className="flex items-center gap-3 mb-1">
-                                <div className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse shadow-[0_0_15px_rgba(34,211,238,0.8)]"></div>
-                                <h3 className="text-2xl md:text-4xl font-black text-white tracking-widest drop-shadow-md">PUNE</h3>
+                        <div className="absolute bottom-6 md:bottom-10 left-6 md:left-10 z-20 transform transition-all duration-500 group-hover:translate-x-2 group-hover:-translate-y-1">
+                            <div className="flex items-center gap-3 mb-2">
+                                <div className={`w-3 h-3 rounded-full animate-pulse ${
+                                    location === 'pune'
+                                        ? 'bg-cyan-400 shadow-[0_0_20px_rgba(34,211,238,0.8)]'
+                                        : 'bg-purple-400 shadow-[0_0_20px_rgba(168,85,247,0.8)]'
+                                }`}></div>
+                                <h3 className="text-3xl md:text-5xl font-black text-white tracking-widest drop-shadow-md">
+                                    {location === 'pune' ? 'PUNE' : 'COIMBATORE'}
+                                </h3>
                             </div>
-                            <p className="text-cyan-400 text-xs md:text-sm font-semibold tracking-[0.3em] uppercase drop-shadow-sm ml-6 md:ml-[1.4rem]">Headquarters</p>
+                            <p className={`text-xs md:text-sm font-semibold tracking-[0.3em] uppercase drop-shadow-sm ml-6 md:ml-[1.6rem] ${
+                                location === 'pune' ? 'text-cyan-400' : 'text-purple-400'
+                            }`}>
+                                {location === 'pune' ? 'Headquarters • Viman Nagar' : 'New Arena • Tamil Nadu'}
+                            </p>
                         </div>
+
+                        {/* Ambient glow in corner */}
+                        <div className={`absolute -bottom-20 -right-20 w-60 h-60 rounded-full blur-[100px] opacity-30 pointer-events-none ${
+                            location === 'pune' ? 'bg-cyan-500' : 'bg-purple-500'
+                        }`}></div>
                     </div>
-
-                    {/* Coimbatore Trailer Card */}
-                    <div className="group relative rounded-2xl md:rounded-3xl overflow-hidden backdrop-blur-md bg-white/5 border border-white/10 shadow-[0_0_30px_rgba(168,85,247,0.1)] transition-all duration-500 hover:shadow-[0_0_50px_rgba(168,85,247,0.25)] hover:border-purple-400/50 hover:-translate-y-2">
-                        {/* Video Overlay Gradient to ensure text is readable */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent z-10 transition-opacity duration-500 group-hover:opacity-70"></div>
-
-                        {/* The Video Element */}
-                        <video
-                            src="https://www.w3schools.com/html/mov_bbb.mp4"
-                            className="w-full h-full object-cover aspect-video md:aspect-[16/10] opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
-                            autoPlay
-                            muted
-                            loop
-                            playsInline
-                            preload="metadata"
-                        />
-
-                        {/* Title and Overlay Info */}
-                        <div className="absolute bottom-6 md:bottom-8 left-6 md:left-8 z-20 transform transition-all duration-500 group-hover:translate-x-2 group-hover:-translate-y-1">
-                            <div className="flex items-center gap-3 mb-1">
-                                <div className="w-2.5 h-2.5 rounded-full bg-purple-400 animate-pulse shadow-[0_0_15px_rgba(168,85,247,0.8)]"></div>
-                                <h3 className="text-2xl md:text-4xl font-black text-white tracking-widest drop-shadow-md">COIMBATORE</h3>
-                            </div>
-                            <p className="text-purple-400 text-xs md:text-sm font-semibold tracking-[0.3em] uppercase drop-shadow-sm ml-6 md:ml-[1.4rem]">New Arena</p>
-                        </div>
-                    </div>
-
                 </div>
             </div>
 
