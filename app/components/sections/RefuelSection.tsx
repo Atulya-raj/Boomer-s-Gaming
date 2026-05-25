@@ -28,44 +28,68 @@ const RefuelSection = () => {
     }, { scope: containerRef });
 
     return (
-        <section id="refuel" ref={containerRef} className="w-full flex flex-col items-center justify-center p-8 pointer-events-auto">
+        <section id="refuel" ref={containerRef} className="w-full relative flex flex-col items-center justify-center p-8 md:py-24 pointer-events-auto">
+            {/* Section Background */}
+            <div className="absolute inset-0 z-0 overflow-hidden bg-zinc-950">
+                {/* Purplish cloudish gradients */}
+                <div className="absolute top-1/4 left-1/4 w-[30rem] md:w-[45rem] h-[30rem] md:h-[45rem] bg-purple-700/30 rounded-full blur-[100px] md:blur-[150px] mix-blend-screen"></div>
+                <div className="absolute bottom-0 right-1/4 w-[25rem] md:w-[40rem] h-[25rem] md:h-[40rem] bg-indigo-600/20 rounded-full blur-[100px] md:blur-[120px] mix-blend-screen"></div>
+                
+                {/* Subtle image overlay */}
+                <img src="/images/happy-hour-promo.jpg" alt="Happy Hours Promo" className="w-full h-full object-cover opacity-25 mix-blend-overlay blur-sm scale-105" />
+                
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-zinc-950/60 to-zinc-950/90"></div>
+            </div>
+
             <h2
                 ref={titleRef}
-                className="text-5xl md:text-8xl font-black text-orange-500 mb-12 mix-blend-difference text-center"
+                className="text-5xl md:text-8xl font-black text-orange-500 mb-12 mix-blend-difference text-center relative z-10"
             >
-                REFUEL
+                HAPPY HOURS
             </h2>
 
             <div
                 ref={cardRef}
-                className="bg-zinc-900/80 backdrop-blur-xl border border-orange-500/30 p-8 rounded-3xl max-w-4xl w-full shadow-[0_0_50px_rgba(249,115,22,0.2)]"
+                className="bg-gradient-to-br from-zinc-900/95 to-black/95 backdrop-blur-2xl border border-orange-500/20 p-5 md:p-8 lg:p-12 rounded-3xl max-w-5xl w-full shadow-[0_0_80px_rgba(249,115,22,0.15)] relative overflow-hidden"
             >
-                <div className="flex flex-col md:flex-row gap-8 items-center">
+                {/* Decorative background glow */}
+                <div className="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-orange-500/20 rounded-full blur-[80px] pointer-events-none"></div>
+
+                <div className="flex flex-col lg:flex-row gap-12 items-center relative z-10">
                     <div className="flex-1">
-                        <h3 className="text-3xl font-bold text-white mb-4">The Zomato District</h3>
-                        <p className="text-gray-300 mb-6">
-                            Book your spot in the VIP lounge. Unlock exclusive happy hours, reserve PC blocks for your squad, and order gourmet fuel directly to your station.
+                        {/* Removed duplicate Happy Hours heading */}
+                        <p className="text-gray-300 mb-8 text-lg md:text-xl leading-relaxed font-medium">
+                            Book your spot in the VIP lounge and unlock exclusive happy hour deals. Reserve PC blocks for your squad and order gourmet fuel directly to your station through our Zomato District integration.
                         </p>
-                        <ul className="space-y-2 text-sm text-gray-400 mb-8">
-                            <li className="flex items-center gap-2">
-                                <span className="w-2 h-2 bg-green-500 rounded-full"></span> Live Table Availability
+                        <ul className="space-y-3 text-sm md:text-base text-gray-400 mb-10 font-semibold tracking-wide">
+                            <li className="flex items-center gap-3">
+                                <span className="w-2.5 h-2.5 bg-green-500 rounded-full shadow-[0_0_10px_rgba(34,197,94,0.6)]"></span> Live Table Availability
                             </li>
-                            <li className="flex items-center gap-2">
-                                <span className="w-2 h-2 bg-green-500 rounded-full"></span> Exclusive App-Only Menu
+                            <li className="flex items-center gap-3">
+                                <span className="w-2.5 h-2.5 bg-green-500 rounded-full shadow-[0_0_10px_rgba(34,197,94,0.6)]"></span> Exclusive App-Only Menu
                             </li>
-                            <li className="flex items-center gap-2">
-                                <span className="w-2 h-2 bg-green-500 rounded-full"></span> 1-Click Tournament Registration
+                            <li className="flex items-center gap-3">
+                                <span className="w-2.5 h-2.5 bg-green-500 rounded-full shadow-[0_0_10px_rgba(34,197,94,0.6)]"></span> 1-Click Tournament Registration
                             </li>
                         </ul>
-                        <button className="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
+                        <a href="https://www.district.in/events/boomers-gaming-caf-2025-buy-tickets" target="_blank" rel="noopener noreferrer" className="inline-block text-center bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-400 hover:to-red-500 text-white font-black py-4 px-10 rounded-full transition-all duration-300 transform hover:scale-105 shadow-[0_10px_30px_-10px_rgba(249,115,22,0.6)] tracking-widest text-sm w-full md:w-auto">
                             BOOK NOW ON ZOMATO
-                        </button>
+                        </a>
                     </div>
 
-                    {/* Decorative mock UI element */}
-                    <div className="flex-1 w-full h-64 bg-gradient-to-br from-gray-800 to-black rounded-xl border border-white/5 flex items-center justify-center overflow-hidden relative">
-                        <div className="absolute inset-0 opacity-20 bg-[url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Zomato_Logo.svg/1024px-Zomato_Logo.svg.png')] bg-center bg-no-repeat bg-contain"></div>
-                        <span className="text-white/50 text-xs tracking-widest uppercase">Zomato Integration</span>
+                    {/* Visual Showcase */}
+                    <div className="flex-1 w-full h-64 md:h-96 relative flex items-center justify-center rounded-2xl overflow-hidden border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] group">
+                        <img src="/images/happy-hour-interior.jpg" alt="Gaming Cafe Interior" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none"></div>
+                        
+                        <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end pointer-events-none z-20">
+                            <div className="bg-black/60 backdrop-blur-md border border-white/10 text-white text-xs font-bold px-4 py-2 rounded-xl uppercase tracking-widest shadow-lg">
+                                Premium Ambience
+                            </div>
+                            <div className="bg-orange-500/90 backdrop-blur-md text-black text-xs font-black px-4 py-2 rounded-xl uppercase tracking-widest shadow-lg">
+                                1+1 Deals
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

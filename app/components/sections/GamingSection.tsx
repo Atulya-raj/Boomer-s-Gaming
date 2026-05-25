@@ -161,7 +161,7 @@ const GamingSection = () => {
             {/* ══════════════════════════════════════════════════════════
                2. PC GAMES SHOWCASE
             ══════════════════════════════════════════════════════════ */}
-            <div ref={pcGamesRef} className="relative py-24 px-4 md:px-8 overflow-hidden">
+            <div ref={pcGamesRef} className="relative py-16 md:py-24 px-4 md:px-8 overflow-hidden">
                 {/* Full-section background — game art collage */}
                 <div className="absolute inset-0 z-0 pointer-events-none">
                     <Image src="/images/games/pc-games-banner.png" alt="PC Games background" fill className="object-cover scale-110 blur-[2px]" />
@@ -206,7 +206,7 @@ const GamingSection = () => {
             {/* ══════════════════════════════════════════════════════════
                3. PS5 GAMES SHOWCASE
             ══════════════════════════════════════════════════════════ */}
-            <div ref={ps5Ref} className="relative py-24 px-4 md:px-8 overflow-hidden">
+            <div ref={ps5Ref} className="relative py-16 md:py-24 px-4 md:px-8 overflow-hidden">
                 {/* Full-section background — PS5 game art collage */}
                 <div className="absolute inset-0 z-0 pointer-events-none">
                     <Image src="/images/games/ps5-games-banner.png" alt="PS5 Games background" fill className="object-cover scale-110 blur-[2px]" />
@@ -251,7 +251,7 @@ const GamingSection = () => {
             {/* ══════════════════════════════════════════════════════════
                4. LOGITECH SIMULATION
             ══════════════════════════════════════════════════════════ */}
-            <div ref={simRef} className="relative py-24 px-4 md:px-8 overflow-hidden">
+            <div ref={simRef} className="relative py-16 md:py-24 px-4 md:px-8 overflow-hidden">
                 {/* Ambient */}
                 <div className="absolute inset-0 pointer-events-none">
                     <div className="absolute top-1/3 right-0 w-[500px] h-[500px] bg-green-900/10 rounded-full blur-[160px]" />
@@ -330,7 +330,7 @@ const GamingSection = () => {
             {/* ══════════════════════════════════════════════════════════
                5. PS VR2 EXPERIENCE
             ══════════════════════════════════════════════════════════ */}
-            <div ref={vrRef} className="relative py-24 px-4 md:px-8 overflow-hidden">
+            <div ref={vrRef} className="relative py-16 md:py-24 px-4 md:px-8 overflow-hidden">
                 {/* Ambient */}
                 <div className="absolute inset-0 pointer-events-none">
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-900/15 rounded-full blur-[180px]" />

@@ -68,13 +68,13 @@ const LandingSection = ({ location }: LandingSectionProps) => {
             </div>
 
             {/* Content Container */}
-            <div className="relative z-10 flex flex-col items-center w-full max-w-7xl px-4 lg:px-8 mt-12 mb-20 md:mt-16 md:mb-24">
+            <div className="relative z-10 flex flex-col items-center w-full max-w-7xl px-4 lg:px-8 mt-6 mb-10 md:mt-16 md:mb-24">
 
                 {/* Hero Text */}
                 <div className="flex flex-col items-center mb-8 md:mb-16">
                     <h1
                         ref={titleRef}
-                        className="text-6xl md:text-8xl lg:text-9xl font-black mb-2 md:mb-4 tracking-tighter text-center"
+                        className="text-5xl md:text-8xl lg:text-9xl font-black mb-2 md:mb-4 tracking-tighter text-center pr-2 md:pr-4"
                         style={{
                             background: 'linear-gradient(to bottom right, #fff, #a0aec0, #cbd5e1)',
                             WebkitBackgroundClip: 'text',
@@ -104,16 +104,10 @@ const LandingSection = ({ location }: LandingSectionProps) => {
                         {/* Video Overlay Gradient */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent z-10 transition-opacity duration-500 group-hover:opacity-70"></div>
 
-                        {/* The Video Element */}
-                        <video
-                            src="https://www.w3schools.com/html/mov_bbb.mp4"
-                            className="w-full h-full object-cover aspect-video md:aspect-[21/9] opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
-                            autoPlay
-                            muted
-                            loop
-                            playsInline
-                            preload="metadata"
-                        />
+                        {/* Static Placeholder */}
+                        <div className="w-full h-full aspect-video md:aspect-[21/9] bg-black/80 flex flex-col items-center justify-center opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700">
+                            <span className="text-white/40 text-sm md:text-xl font-bold tracking-[0.3em] uppercase border border-white/20 px-6 py-3 rounded-xl backdrop-blur-md">TRAILER PLACEHOLDER</span>
+                        </div>
 
                         {/* Title and Overlay Info */}
                         <div className="absolute bottom-6 md:bottom-10 left-6 md:left-10 z-20 transform transition-all duration-500 group-hover:translate-x-2 group-hover:-translate-y-1">

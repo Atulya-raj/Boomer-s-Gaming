@@ -56,7 +56,7 @@ const EventSection = () => {
     }, { scope: containerRef });
 
     return (
-        <section id="events" ref={containerRef} className="relative w-full min-h-[90vh] py-24 px-4 md:px-8 bg-black">
+        <section id="events" ref={containerRef} className="relative w-full min-h-[90vh] py-16 md:py-24 px-4 md:px-8 bg-black">
             {/* Background elements */}
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
                 <div className="absolute top-[20%] right-[10%] w-[30vw] h-[30vw] min-w-[300px] min-h-[300px] rounded-full bg-purple-900/10 blur-[100px]" />
@@ -97,7 +97,7 @@ const EventSection = () => {
                                 </div>
 
                                 {/* Content */}
-                                <div className="relative p-8 -mt-20 z-10 flex flex-col h-[calc(100%-16rem)] min-h-[220px]">
+                                <div className="relative p-6 md:p-8 -mt-20 z-10 flex flex-col h-[calc(100%-16rem)] min-h-[220px]">
                                     <h3 className={`text-3xl font-bold mb-4 ${card.color === 'blue' ? 'text-blue-400' : 'text-purple-400'} uppercase tracking-wider`}>
                                         {card.title}
                                     </h3>

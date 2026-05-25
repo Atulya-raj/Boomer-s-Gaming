@@ -56,7 +56,7 @@ const ArsenalSection = () => {
 
     return (
         <section id="arsenal" className="relative w-full bg-black">
-            <div ref={containerRef} className="relative min-h-screen flex items-center justify-center py-24 px-4 md:px-8 overflow-hidden">
+            <div ref={containerRef} className="relative min-h-screen flex items-center justify-center py-16 md:py-24 px-4 md:px-8 overflow-hidden">
                 {/* Background */}
                 <div className="absolute inset-0 z-0 pointer-events-none">
                     <Image src="/images/gaming.png" alt="Gaming Setup" fill className="object-cover" />
@@ -85,7 +85,7 @@ const ArsenalSection = () => {
 
                         {/* Right: PC Specs Card */}
                         <div className="flex-1 w-full max-w-md">
-                            <div className="bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-3xl p-8 shadow-2xl relative overflow-hidden">
+                            <div className="bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-3xl p-5 md:p-8 shadow-2xl relative overflow-hidden">
                                 {/* Top glow */}
                                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[1px] bg-gradient-to-r from-transparent via-green-500/50 to-transparent" />
                                 <h3 className="text-sm font-bold tracking-[0.3em] uppercase text-green-400 mb-6 flex items-center gap-2">

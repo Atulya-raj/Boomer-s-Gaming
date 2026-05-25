@@ -52,21 +52,23 @@ const LocationSelector: React.FC<LocationSelectorProps> = ({ onSelect }) => {
     return (
         <div
             ref={containerRef}
-            className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black overflow-hidden"
+            className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-zinc-950 overflow-hidden"
         >
             {/* Animated background effects */}
-            <div className="absolute inset-0 pointer-events-none">
-                {/* Pune glow - left */}
-                <div className="absolute top-1/2 left-[25%] -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-cyan-500/8 rounded-full blur-[180px] animate-pulse" />
-                {/* Coimbatore glow - right */}
-                <div className="absolute top-1/2 right-[25%] translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-purple-500/8 rounded-full blur-[180px] animate-pulse" style={{ animationDelay: '1s' }} />
-                {/* Center subtle glow */}
-                <div className="absolute top-[30%] left-1/2 -translate-x-1/2 w-[300px] h-[200px] bg-white/3 rounded-full blur-[120px]" />
+            <div className="absolute inset-0 pointer-events-none z-0">
+                {/* Purplish cloudish gradients */}
+                <div className="absolute top-0 left-0 w-[40rem] md:w-[60rem] h-[40rem] md:h-[60rem] bg-purple-700/30 rounded-full blur-[120px] md:blur-[150px] mix-blend-screen animate-pulse" />
+                <div className="absolute bottom-0 right-0 w-[30rem] md:w-[50rem] h-[30rem] md:h-[50rem] bg-indigo-600/30 rounded-full blur-[120px] md:blur-[150px] mix-blend-screen animate-pulse" style={{ animationDelay: '1.5s' }} />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[30rem] h-[30rem] bg-fuchsia-600/20 rounded-full blur-[120px] mix-blend-screen animate-pulse" style={{ animationDelay: '3s' }} />
+
                 {/* Grid pattern overlay */}
-                <div className="absolute inset-0 opacity-[0.03]" style={{
+                <div className="absolute inset-0 opacity-[0.05]" style={{
                     backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
                     backgroundSize: '60px 60px',
                 }} />
+                
+                {/* Vignette effect */}
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-zinc-950/30 to-zinc-950/90 mix-blend-multiply"></div>
             </div>
 
             {/* Content */}
@@ -97,7 +99,7 @@ const LocationSelector: React.FC<LocationSelectorProps> = ({ onSelect }) => {
                 </p>
 
                 {/* Location Cards */}
-                <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 w-full max-w-3xl">
+                <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 lg:gap-8 w-full max-w-3xl">
 
                     {/* Pune Card */}
                     <button

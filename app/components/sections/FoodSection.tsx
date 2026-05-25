@@ -55,7 +55,7 @@ const FoodSection = () => {
     }, { scope: containerRef });
 
     return (
-        <section id="food" ref={containerRef} className="relative w-full min-h-[90vh] flex items-center justify-center py-20 px-4 md:px-8 bg-black">
+        <section id="food" ref={containerRef} className="relative w-full min-h-[90vh] flex items-center justify-center py-16 md:py-20 px-4 md:px-8 bg-black">
             {/* Background Image Container */}
             <div className="absolute inset-0 w-full h-full z-0 pointer-events-none overflow-hidden">
                 <Image
@@ -70,7 +70,7 @@ const FoodSection = () => {
 
             {/* Content Card container - using glassmorphism */}
             <div className="relative z-10 w-full max-w-5xl mx-auto">
-                <div ref={contentRef} className="bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl p-8 md:p-12 shadow-[0_0_50px_rgba(236,72,153,0.15)] flex flex-col md:flex-row items-center gap-12">
+                <div ref={contentRef} className="bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl p-5 md:p-8 lg:p-12 shadow-[0_0_50px_rgba(236,72,153,0.15)] flex flex-col md:flex-row items-center gap-8 md:gap-12">
 
                     <div className="flex-1 text-center md:text-left">
                         <span className="text-pink-400 font-bold tracking-widest uppercase mb-4 block">Fuel Up</span>
