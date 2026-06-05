@@ -44,7 +44,7 @@ const FooterSection = () => {
                 {/* Partners / High-End Brands */}
                 <div className="flex flex-col items-center justify-center mb-20 border-b border-white/10 pb-16">
                     <div className="text-cyan-500/60 tracking-[0.4em] text-xs font-bold mb-8 uppercase text-center w-full relative">
-                        <span className="bg-black px-4 relative z-10">Powered By Arsenal Leaders</span>
+                        <span className="bg-black px-4 relative z-10">Powered By Elite Setups</span>
                         <div className="absolute top-1/2 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent z-0"></div>
                     </div>
                     <div className="flex flex-wrap justify-center gap-12 md:gap-24 opacity-60 hover:opacity-100 transition-all duration-500">

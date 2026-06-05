@@ -9,9 +9,9 @@ gsap.registerPlugin(ScrollTrigger);
 
 // Placeholder images for the gallery — user will provide real ones later
 const cafeGalleryImages = [
-    { src: "/images/food.jpeg", alt: "Cafe ambiance" },
-    { src: "/images/food.jpeg", alt: "Signature dishes" },
-    { src: "/images/food.jpeg", alt: "Fresh beverages" },
+    { src: "/images/food-burger.png", alt: "Monster Burger" },
+    { src: "/images/food-toast.png", alt: "Chocolate French Toast" },
+    { src: "/images/food-wrap.png", alt: "Grilled Wrap" },
 ];
 
 const FoodSection = () => {
@@ -59,10 +59,10 @@ const FoodSection = () => {
             {/* Background Image Container */}
             <div className="absolute inset-0 w-full h-full z-0 pointer-events-none overflow-hidden">
                 <Image
-                    src="/images/food.jpeg"
-                    alt="Food and Cafe"
+                    src="/images/cafe-background.jpg"
+                    alt="Cafe Reception"
                     fill
-                    className="object-cover saturate-150 contrast-110 brightness-110"
+                    className="object-cover opacity-60"
                 />
                 {/* Overlay gradient - significantly lighter */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/60"></div>
@@ -72,19 +72,23 @@ const FoodSection = () => {
             <div className="relative z-10 w-full max-w-5xl mx-auto">
                 <div ref={contentRef} className="bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl p-5 md:p-8 lg:p-12 shadow-[0_0_50px_rgba(236,72,153,0.15)] flex flex-col md:flex-row items-center gap-8 md:gap-12">
 
-                    <div className="flex-1 text-center md:text-left">
-                        <span className="text-pink-400 font-bold tracking-widest uppercase mb-4 block">Fuel Up</span>
-                        <h2 className="text-4xl md:text-6xl font-black mb-6 text-white leading-tight">
-                            THE <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-orange-400">CAFE</span>
-                        </h2>
-                        <p className="text-lg text-gray-300 mb-8 max-w-md mx-auto md:mx-0">
-                            Level up your energy. From signature mocktails to loaded nachos, our Zomato District certified menu keeps you in the game without hitting pause.
-                        </p>
-                        <Link href="/cafe-menu">
-                            <button className="px-8 py-4 bg-gradient-to-r from-pink-500 hover:from-pink-600 to-orange-500 hover:to-orange-600 text-white font-bold rounded-full transition-transform hover:scale-105 active:scale-95 shadow-lg shadow-pink-500/30">
-                                VIEW MENU
-                            </button>
-                        </Link>
+                    <div className="flex-1 flex flex-col justify-center">
+                        <div className="w-full max-w-lg mx-auto">
+                            <span className="text-pink-400 font-bold tracking-widest uppercase mb-4 block text-center">Fuel Up</span>
+                            <h2 className="text-4xl md:text-6xl font-black mb-6 text-white leading-tight text-center">
+                                THE <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-orange-400">CAFE</span>
+                            </h2>
+                            <p className="text-lg text-gray-300 mb-8 text-center mx-auto">
+                                Level up your energy. From loaded burgers and satisfying pastas to signature mocktails, our Zomato District certified menu keeps you in the game without hitting pause.
+                            </p>
+                            <div className="flex justify-center">
+                                <Link href="/cafe-menu">
+                                    <button className="px-8 py-4 bg-gradient-to-r from-pink-500 hover:from-pink-600 to-orange-500 hover:to-orange-600 text-white font-bold rounded-full transition-transform hover:scale-105 active:scale-95 shadow-lg shadow-pink-500/30">
+                                        VIEW MENU
+                                    </button>
+                                </Link>
+                            </div>
+                        </div>
                     </div>
 
                     {/* Mini Gallery inside card */}

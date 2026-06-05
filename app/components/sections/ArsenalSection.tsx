@@ -55,7 +55,7 @@ const ArsenalSection = () => {
     }, { scope: containerRef });
 
     return (
-        <section id="arsenal" className="relative w-full bg-black">
+        <section id="setup" className="relative w-full bg-black">
             <div ref={containerRef} className="relative min-h-screen flex items-center justify-center py-16 md:py-24 px-4 md:px-8 overflow-hidden">
                 {/* Background */}
                 <div className="absolute inset-0 z-0 pointer-events-none">
@@ -74,7 +74,7 @@ const ArsenalSection = () => {
                             <h2 className="text-5xl md:text-7xl lg:text-8xl font-black mt-8 mb-6 text-white uppercase tracking-tight leading-[0.9]">
                                 The{' '}
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-emerald-400 to-cyan-400">
-                                    Arsenal
+                                    Setup
                                 </span>
                             </h2>
                             <p className="text-lg md:text-xl text-gray-300 max-w-xl mb-8">

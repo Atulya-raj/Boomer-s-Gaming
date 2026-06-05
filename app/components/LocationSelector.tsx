@@ -181,7 +181,7 @@ const LocationSelector: React.FC<LocationSelectorProps> = ({ onSelect }) => {
                 </div>
 
                 {/* Subtle hint */}
-                <p className="text-gray-600 text-xs mt-8 tracking-widest uppercase animate-pulse">
+                <p className="text-gray-400 font-semibold text-xs mt-8 tracking-widest uppercase">
                     You can switch locations anytime
                 </p>
             </div>

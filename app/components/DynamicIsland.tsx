@@ -118,9 +118,9 @@ const DynamicIsland = () => {
                             <span className="text-white text-[9px] sm:text-xs font-bold group-hover:text-purple-400 transition-colors">Book Party</span>
                         </button>
 
-                        {/* Arsenal */}
-                        <button onClick={(e) => { e.stopPropagation(); scrollTo('arsenal'); }} className="bg-white/5 hover:bg-green-500/20 border border-white/5 hover:border-green-500/50 hover:shadow-[0_0_15px_rgba(34,197,94,0.3)] rounded-xl p-1.5 sm:p-3 flex items-center justify-center transition-all duration-300 group">
-                            <span className="text-white text-[9px] sm:text-xs font-bold group-hover:text-green-400 transition-colors">Arsenal</span>
+                        {/* Setup */}
+                        <button onClick={(e) => { e.stopPropagation(); scrollTo('setup'); }} className="bg-white/5 hover:bg-green-500/20 border border-white/5 hover:border-green-500/50 hover:shadow-[0_0_15px_rgba(34,197,94,0.3)] rounded-xl p-1.5 sm:p-3 flex items-center justify-center transition-all duration-300 group">
+                            <span className="text-white text-[9px] sm:text-xs font-bold group-hover:text-green-400 transition-colors">The Setup</span>
                         </button>
 
                         {/* Buy Merch */}
