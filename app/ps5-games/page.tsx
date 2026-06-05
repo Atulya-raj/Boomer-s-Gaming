@@ -61,7 +61,7 @@ export default function PS5GamesPage() {
         <main ref={containerRef} className="min-h-screen bg-black text-white relative overflow-hidden">
             {/* Back Button */}
             <button
-                onClick={() => router.back()}
+                onClick={() => router.push('/#arsenal')}
                 className="fixed top-6 left-4 md:left-8 z-[100] p-3 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-blue-500/30 rounded-full backdrop-blur-xl transition-all group flex items-center gap-2"
             >
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white group-hover:-translate-x-1 transition-transform group-hover:text-blue-400">
