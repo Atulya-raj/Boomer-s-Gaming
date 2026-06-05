@@ -3,6 +3,7 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
+import Link from 'next/link';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -57,12 +58,16 @@ const PartySection = () => {
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-6 justify-center max-w-md mx-auto">
-                    <button className="flex-1 px-8 py-5 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold rounded-xl transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(6,182,212,0.4)]">
-                        BOOK A PRIVATE CABIN
-                    </button>
-                    <button className="flex-1 px-8 py-5 bg-white/10 backdrop-blur-md border border-white/20 text-white font-bold rounded-xl transition-all hover:bg-white/20 hover:border-white/50">
-                        GET A QUOTE
-                    </button>
+                    <Link href="/event-checkout?type=party" target="_blank" rel="noopener noreferrer" className="flex-1">
+                        <button className="w-full px-8 py-5 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold rounded-xl transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(6,182,212,0.4)]">
+                            BOOK A PRIVATE CABIN
+                        </button>
+                    </Link>
+                    <Link href="/event-checkout?type=party" target="_blank" rel="noopener noreferrer" className="flex-1">
+                        <button className="w-full px-8 py-5 bg-white/10 backdrop-blur-md border border-white/20 text-white font-bold rounded-xl transition-all hover:bg-white/20 hover:border-white/50">
+                            GET A QUOTE
+                        </button>
+                    </Link>
                 </div>
             </div>
         </section>

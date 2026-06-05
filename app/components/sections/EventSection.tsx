@@ -81,7 +81,7 @@ const EventSection = () => {
                 {/* Cards Container */}
                 <div ref={cardsRef} className="w-full flex flex-col md:flex-row gap-8 justify-center items-stretch relative z-20">
                     {EventCards.map((card, index) => (
-                        <Link href={`/event-checkout?type=${card.type}`} key={index} className="flex-1 max-w-lg w-full group">
+                        <Link href={`/event-checkout?type=${card.type}`} key={index} target="_blank" rel="noopener noreferrer" className="flex-1 max-w-lg w-full group">
                             <div className="h-full relative rounded-2xl overflow-hidden cursor-pointer transition-all duration-500 transform border border-white/10 bg-white/5 backdrop-blur-sm group-hover:-translate-y-2 group-hover:border-white/30 group-hover:shadow-[0_0_40px_rgba(168,85,247,0.3)]">
 
                                 {/* Image Container */}
