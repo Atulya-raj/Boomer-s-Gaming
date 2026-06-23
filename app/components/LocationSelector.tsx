@@ -127,8 +127,7 @@ const LocationSelector: React.FC<LocationSelectorProps> = ({ onSelect }) => {
                                     <div className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse shadow-[0_0_15px_rgba(34,211,238,0.8)]" />
                                     <h3 className="text-3xl md:text-4xl font-black text-white tracking-widest drop-shadow-md">PUNE</h3>
                                 </div>
-                                <p className="text-cyan-400 text-xs md:text-sm font-semibold tracking-[0.3em] uppercase ml-[1.4rem]">Headquarters</p>
-                                <p className="text-gray-500 text-xs mt-2 ml-[1.4rem] tracking-wide">Viman Nagar</p>
+                                <p className="text-gray-500 text-xs ml-[1.4rem] tracking-wide">Viman Nagar</p>
                             </div>
 
                             {/* Arrow indicator on hover */}
@@ -166,8 +165,7 @@ const LocationSelector: React.FC<LocationSelectorProps> = ({ onSelect }) => {
                                     <div className="w-2.5 h-2.5 rounded-full bg-purple-400 animate-pulse shadow-[0_0_15px_rgba(168,85,247,0.8)]" />
                                     <h3 className="text-3xl md:text-4xl font-black text-white tracking-widest drop-shadow-md">COIMBATORE</h3>
                                 </div>
-                                <p className="text-purple-400 text-xs md:text-sm font-semibold tracking-[0.3em] uppercase ml-[1.4rem]">New Arena</p>
-                                <p className="text-gray-500 text-xs mt-2 ml-[1.4rem] tracking-wide">Tamil Nadu</p>
+                                <p className="text-gray-500 text-xs ml-[1.4rem] tracking-wide">Tamil Nadu</p>
                             </div>
 
                             {/* Arrow indicator on hover */}
@@ -181,8 +179,8 @@ const LocationSelector: React.FC<LocationSelectorProps> = ({ onSelect }) => {
                 </div>
 
                 {/* Subtle hint */}
-                <p className="text-gray-400 font-semibold text-xs mt-8 tracking-widest uppercase">
-                    You can switch locations anytime
+                <p className="text-gray-400 font-semibold text-xs mt-8 tracking-widest uppercase text-center max-w-sm">
+                    You can switch locations anytime from the top menu
                 </p>
             </div>
         </div>

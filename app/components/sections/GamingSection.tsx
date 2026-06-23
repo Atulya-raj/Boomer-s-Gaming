@@ -190,14 +190,14 @@ const GamingSection = () => {
 
                     {/* See All Games CTA */}
                     <div className="text-center">
-                        <Link href="/pc-games">
+                        <a href="https://docs.google.com/spreadsheets/d/1YUhqsnEe7z2WygTlMWbrHNPG0nV_OoXINlzyKIkKWiY/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
                             <button className="group inline-flex items-center gap-3 px-8 py-4 bg-white/10 hover:bg-white/15 border border-white/20 hover:border-cyan-500/50 rounded-full backdrop-blur-xl transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/20">
                                 <span className="text-white font-bold uppercase tracking-widest text-sm">See All Games</span>
                                 <svg className="w-4 h-4 text-cyan-400 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                                 </svg>
                             </button>
-                        </Link>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -235,33 +235,35 @@ const GamingSection = () => {
 
                     {/* See All Games CTA */}
                     <div className="text-center">
-                        <Link href="/ps5-games">
+                        <a href="https://docs.google.com/spreadsheets/d/1YUhqsnEe7z2WygTlMWbrHNPG0nV_OoXINlzyKIkKWiY/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
                             <button className="group inline-flex items-center gap-3 px-8 py-4 bg-white/10 hover:bg-white/15 border border-white/20 hover:border-blue-500/50 rounded-full backdrop-blur-xl transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20">
                                 <span className="text-white font-bold uppercase tracking-widest text-sm">See All Games</span>
                                 <svg className="w-4 h-4 text-blue-400 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                                 </svg>
                             </button>
-                        </Link>
+                        </a>
                     </div>
                 </div>
             </div>
 
 
             {/* ══════════════════════════════════════════════════════════
-               4. LOGITECH SIMULATION
+               4. SPECIALIZED EXPERIENCES: SIM RACING & PS VR2
             ══════════════════════════════════════════════════════════ */}
-            <div ref={simRef} className="relative py-16 md:py-24 px-4 md:px-8 overflow-hidden">
+            <div className="relative py-16 md:py-24 px-4 md:px-8 overflow-hidden">
                 {/* Ambient */}
                 <div className="absolute inset-0 pointer-events-none">
-                    <div className="absolute top-1/3 right-0 w-[500px] h-[500px] bg-green-900/10 rounded-full blur-[160px]" />
+                    <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-green-900/15 rounded-full blur-[160px] -translate-y-1/2" />
+                    <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-purple-900/15 rounded-full blur-[160px] -translate-y-1/2" />
                 </div>
 
                 <div className="relative z-10 w-full max-w-7xl mx-auto">
-                    <div className="flex flex-col lg:flex-row gap-12 items-center">
-                        {/* Left content */}
-                        <div className="flex-1">
-                            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-green-500/30 bg-green-500/5 text-green-400 text-xs font-bold tracking-widest uppercase mb-6">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+                        
+                        {/* Left: Sim Racing */}
+                        <div ref={simRef} className="flex flex-col">
+                            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-green-500/30 bg-green-500/5 text-green-400 text-xs font-bold tracking-widest uppercase mb-6 self-start">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                                     <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5" fill="none" />
                                     <circle cx="12" cy="12" r="4" fill="currentColor" />
@@ -269,117 +271,74 @@ const GamingSection = () => {
                                 Logitech Simulation
                             </div>
 
-                            <h2 className="text-4xl md:text-6xl font-black text-white uppercase tracking-tight mb-6 leading-[0.95]">
-                                SIM{' '}
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-lime-400">
-                                    Racing
-                                </span>
+                            <h2 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tight mb-4 leading-[0.95]">
+                                SIM <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-lime-400">Racing</span>
                             </h2>
-
-                            <p className="text-gray-300 text-lg mb-8 max-w-lg">
+                            <p className="text-gray-300 text-base mb-6">
                                 Feel every corner, every gear shift. Our Logitech-powered simulation rigs deliver the most immersive racing experience outside a real cockpit.
                             </p>
 
-                            {/* Games list */}
-                            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-8">
-                                {simGames.map((game) => (
-                                    <div key={game} className="px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm font-bold text-center hover:bg-white/10 hover:border-green-500/30 transition-all duration-300">
-                                        {game}
-                                    </div>
-                                ))}
-                            </div>
-
-                            {/* Branch availability */}
-                            <div className="space-y-3 mb-8">
-                                <div className="flex items-center gap-3">
-                                    <span className="w-2.5 h-2.5 rounded-full bg-green-400 animate-pulse" />
-                                    <span className="text-gray-300 text-sm font-medium">Available at <strong className="text-white">Coimbatore</strong> &amp; <strong className="text-white">Pune</strong></span>
-                                </div>
-                                <div className="flex items-center gap-3">
-                                    <span className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse" />
-                                    <span className="text-amber-300/80 text-sm font-medium">
-                                        🚀 Cockpit Simulation coming to Coimbatore in 2-3 months!
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Right: Visual card with real image */}
-                        <div className="flex-1 w-full max-w-lg">
-                            <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl aspect-[4/3]">
-                                <Image
-                                    src="/images/games/sim-racing.png"
-                                    alt="Logitech Sim Racing Setup"
-                                    fill
-                                    className="object-cover"
-                                />
+                            <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl aspect-video mb-6">
+                                <Image src="/images/games/sim-racing.png" alt="Logitech Sim Racing Setup" fill className="object-cover" />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                                <div className="absolute bottom-0 left-0 right-0 p-6">
+                                <div className="absolute bottom-0 left-0 p-5">
                                     <p className="text-white font-black text-lg uppercase tracking-wider mb-1">Cockpit Ready</p>
                                     <p className="text-gray-400 text-xs">Logitech G Pro Racing Wheel • Triple Monitor Setup</p>
                                 </div>
-                                {/* Animated green border glow */}
-                                <div className="absolute -inset-[1px] rounded-3xl bg-gradient-to-r from-green-500/20 via-transparent to-green-500/20 -z-10 blur-sm" />
+                                <div className="absolute -inset-[1px] rounded-2xl bg-gradient-to-r from-green-500/20 via-transparent to-green-500/20 -z-10 blur-sm" />
+                            </div>
+
+                            {/* Branch availability */}
+                            <div className="space-y-2 text-sm">
+                                <div className="flex items-center gap-3">
+                                    <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+                                    <span className="text-gray-300 font-medium">Available at <strong className="text-white">Coimbatore</strong> &amp; <strong className="text-white">Pune</strong></span>
+                                </div>
+                                <div className="flex items-center gap-3">
+                                    <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
+                                    <span className="text-amber-300/80 font-medium">🚀 Cockpit Simulation coming to Coimbatore in 2-3 months!</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
 
+                        {/* Right: PS VR2 */}
+                        <div ref={vrRef} className="flex flex-col h-full">
+                            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-purple-500/30 bg-purple-500/5 text-purple-400 text-xs font-bold tracking-widest uppercase mb-6 self-start">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                                    <path d="M2 10a2 2 0 012-2h16a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" />
+                                    <path d="M12 14a2 2 0 100-4 2 2 0 000 4z" />
+                                    <path d="M6 8V6m12 2V6" />
+                                </svg>
+                                Virtual Reality
+                            </div>
 
-            {/* ══════════════════════════════════════════════════════════
-               5. PS VR2 EXPERIENCE
-            ══════════════════════════════════════════════════════════ */}
-            <div ref={vrRef} className="relative py-16 md:py-24 px-4 md:px-8 overflow-hidden">
-                {/* Ambient */}
-                <div className="absolute inset-0 pointer-events-none">
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-900/15 rounded-full blur-[180px]" />
-                    <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-blue-900/10 rounded-full blur-[140px]" />
-                </div>
+                            <h2 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tight mb-4 leading-[0.95]">
+                                Experience <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400">PS VR2</span>
+                            </h2>
+                            <p className="text-gray-300 text-base mb-6">
+                                Step into worlds beyond imagination. PlayStation VR2 delivers the most immersive virtual reality experience with OLED HDR displays and eye tracking.
+                            </p>
 
-                <div className="relative z-10 w-full max-w-5xl mx-auto text-center">
-                    {/* VR icon */}
-                    <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-purple-500/20 to-blue-500/20 border border-purple-500/30 mb-8">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-purple-400">
-                            <path d="M2 10a2 2 0 012-2h16a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" />
-                            <path d="M12 14a2 2 0 100-4 2 2 0 000 4z" />
-                            <path d="M6 8V6m12 2V6" />
-                        </svg>
-                    </div>
+                            <div className="relative rounded-2xl overflow-hidden border border-purple-500/20 aspect-video bg-gradient-to-br from-purple-900/30 via-black to-blue-900/30 mb-6 flex-grow min-h-[200px]">
+                                <div className="absolute inset-0 flex items-center justify-center">
+                                    <div className="text-center">
+                                        <div className="text-6xl mb-3">🥽</div>
+                                        <p className="text-white/60 text-xs font-bold uppercase tracking-widest px-4">No setup required — just pure, mind-blowing immersion.</p>
+                                    </div>
+                                </div>
+                                <div className="absolute -inset-[1px] rounded-2xl bg-gradient-to-r from-purple-500/10 via-blue-500/10 to-purple-500/10 -z-10 blur-md animate-pulse" />
+                            </div>
 
-                    <h2 className="text-4xl md:text-7xl font-black text-white uppercase tracking-tight mb-6 leading-[0.95]">
-                        Experience{' '}
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400">
-                            PS VR2
-                        </span>
-                    </h2>
-
-                    <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-8">
-                        Step into worlds beyond imagination. With OLED HDR displays, eye tracking, and 3D haptic feedback — PlayStation VR2 delivers the most immersive virtual reality experience available today.
-                    </p>
-
-                    <p className="text-gray-400 max-w-lg mx-auto mb-10 text-base">
-                        Walk in, put on the headset, and feel the game come alive around you. No setup required — just pure, mind-blowing immersion at Boomer&apos;s Gaming Cafe.
-                    </p>
-
-                    {/* Feature pills */}
-                    <div className="flex flex-wrap justify-center gap-3 mb-10">
-                        {['OLED HDR', 'Eye Tracking', '3D Haptics', '110° FOV', '4K Resolution'].map((feat) => (
-                            <span key={feat} className="px-4 py-2 bg-white/5 border border-purple-500/20 text-purple-300 text-xs font-bold tracking-wider uppercase rounded-full backdrop-blur-md hover:bg-purple-500/10 hover:border-purple-500/40 transition-all duration-300">
-                                {feat}
-                            </span>
-                        ))}
-                    </div>
-
-                    {/* Glowing card */}
-                    <div className="relative max-w-2xl mx-auto rounded-3xl overflow-hidden border border-purple-500/20 aspect-video bg-gradient-to-br from-purple-900/30 via-black to-blue-900/30">
-                        <div className="absolute inset-0 flex items-center justify-center">
-                            <div className="text-center">
-                                <div className="text-7xl mb-4">🥽</div>
-                                <p className="text-white/60 text-sm font-bold uppercase tracking-widest">Ready to Dive In?</p>
+                            {/* Feature pills */}
+                            <div className="flex flex-wrap gap-2 mt-auto">
+                                {['OLED HDR', 'Eye Tracking', '3D Haptics', '110° FOV', '4K Resolution'].map((feat) => (
+                                    <span key={feat} className="px-3 py-1.5 bg-white/5 border border-purple-500/20 text-purple-300 text-[10px] font-bold tracking-wider uppercase rounded-full backdrop-blur-md">
+                                        {feat}
+                                    </span>
+                                ))}
                             </div>
                         </div>
-                        <div className="absolute -inset-[1px] rounded-3xl bg-gradient-to-r from-purple-500/10 via-blue-500/10 to-purple-500/10 -z-10 blur-md animate-pulse" />
+
                     </div>
                 </div>
             </div>

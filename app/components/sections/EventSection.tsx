@@ -9,10 +9,10 @@ gsap.registerPlugin(ScrollTrigger);
 
 const EventCards = [
     {
-        title: "Normal Booking",
-        description: "Book our premium gaming rigs or consoles for your personal time. Enjoy a distraction-free environment to climb the ranks or dive into your favorite solo adventure.",
+        title: "Corporate Booking",
+        description: "Book our premium gaming rigs or consoles for your team. Enjoy a distraction-free environment for team-building or an epic gaming session.",
         imageUrl: "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop", // Placeholder image
-        type: "normal",
+        type: "corporate",
         color: "blue"
     },
     {

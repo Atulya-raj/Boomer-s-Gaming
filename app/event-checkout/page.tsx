@@ -9,7 +9,7 @@ function CheckoutForm() {
     const type = searchParams.get('type');
 
     // Default item based on type
-    const bookingType = type === 'party' ? 'Party Booking' : 'Normal Booking';
+    const bookingType = type === 'party' ? 'Party Booking' : 'Corporate Booking';
 
     const [formData, setFormData] = useState({
         name: '',
@@ -35,26 +35,23 @@ function CheckoutForm() {
             `*Name:* ${formData.name}\n` +
             `*WhatsApp Number:* ${formData.phone}\n` +
             `*Total People:* ${formData.peopleCount}\n` +
-            `*Description:* ${formData.description}`;
+            `*Description:* ${formData.description || 'N/A'}`;
 
-        // Replace with actual owner's WhatsApp API number later
-        // Currently using a placeholder number 0000000000
-        const whatsappNumber = "0000000000";
+        const whatsappUrl = "https://chat.whatsapp.com/DgRDyrOC2EKGjypHWazXiF?mode=gi_t";
 
-        // Encode message for URL
-        const encodedMessage = encodeURIComponent(message);
+        const redirect = () => {
+            setTimeout(() => {
+                window.open(whatsappUrl, '_blank');
+                setIsSubmitting(false);
+                router.push('/');
+            }, 500);
+        };
 
-        // Create WhatsApp API URL
-        const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
-
-        // Adding slight delay for button animation effect before redirect
-        setTimeout(() => {
-            window.open(whatsappUrl, '_blank');
-            setIsSubmitting(false);
-
-            // Optionally redirect user back to home after opening WhatsApp
-            router.push('/');
-        }, 500);
+        if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(message).then(redirect).catch(redirect);
+        } else {
+            redirect();
+        }
     };
 
     return (
@@ -132,8 +129,8 @@ function CheckoutForm() {
                     <div>
                         <h4 className="text-white font-medium mb-1">What happens next?</h4>
                         <p className="text-sm text-gray-400 text-justify">
-                            You will get reverted back inside a <strong className="text-purple-400">few hours</strong>.
-                            Clicking proceed will redirect you to WhatsApp to send these details directly to our team.
+                            Your booking details will be <strong className="text-purple-400">copied to your clipboard</strong>.
+                            Clicking proceed will open our WhatsApp group where you can paste the message. Our team will reply in <strong className="text-purple-400">10-15 mins</strong>.
                         </p>
                     </div>
                 </div>

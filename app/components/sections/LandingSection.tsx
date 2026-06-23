@@ -11,7 +11,7 @@ interface LandingSectionProps {
 
 const LandingSection = ({ location }: LandingSectionProps) => {
     const containerRef = useRef<HTMLDivElement>(null);
-    const titleRef = useRef<HTMLHeadingElement>(null);
+    const titleRef = useRef<HTMLImageElement>(null);
     const subtitleRef = useRef<HTMLParagraphElement>(null);
     const cardsRef = useRef<HTMLDivElement>(null);
     const indicatorRef = useRef<HTMLDivElement>(null);
@@ -72,18 +72,12 @@ const LandingSection = ({ location }: LandingSectionProps) => {
 
                 {/* Hero Text */}
                 <div className="flex flex-col items-center mb-8 md:mb-16">
-                    <h1
+                    <img
                         ref={titleRef}
-                        className="text-5xl md:text-8xl lg:text-9xl font-black mb-2 md:mb-4 tracking-tighter text-center pr-2 md:pr-4"
-                        style={{
-                            background: 'linear-gradient(to bottom right, #fff, #a0aec0, #cbd5e1)',
-                            WebkitBackgroundClip: 'text',
-                            WebkitTextFillColor: 'transparent',
-                            filter: 'drop-shadow(0px 4px 20px rgba(0,255,255,0.2))'
-                        }}
-                    >
-                        BOOMER'S
-                    </h1>
+                        src="/images/logo.png"
+                        alt="Boomer's Gaming"
+                        className="w-24 md:w-40 lg:w-[14rem] object-contain mb-6 drop-shadow-[0_4px_20px_rgba(0,255,255,0.2)]"
+                    />
 
                     <p
                         ref={subtitleRef}
@@ -124,7 +118,7 @@ const LandingSection = ({ location }: LandingSectionProps) => {
                             <p className={`text-xs md:text-sm font-semibold tracking-[0.3em] uppercase drop-shadow-sm ml-6 md:ml-[1.6rem] ${
                                 location === 'pune' ? 'text-cyan-400' : 'text-purple-400'
                             }`}>
-                                {location === 'pune' ? 'Headquarters • Viman Nagar' : 'New Arena • Tamil Nadu'}
+                                {location === 'pune' ? 'Viman Nagar' : 'Tamil Nadu'}
                             </p>
                         </div>
 
