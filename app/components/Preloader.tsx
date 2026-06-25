@@ -49,7 +49,7 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
     }, [onComplete]);
 
     return (
-        <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black text-white">
+        <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black text-white touch-none">
             <div className="text-4xl font-bold mb-4 tracking-widest animate-pulse text-neon-blue">
                 BOOMER'S
             </div>

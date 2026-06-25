@@ -52,7 +52,7 @@ const LocationSelector: React.FC<LocationSelectorProps> = ({ onSelect }) => {
     return (
         <div
             ref={containerRef}
-            className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-zinc-950 overflow-hidden"
+            className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-zinc-950 overflow-hidden touch-none"
         >
             {/* Animated background effects */}
             <div className="absolute inset-0 pointer-events-none z-0">
