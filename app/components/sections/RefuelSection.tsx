@@ -38,13 +38,44 @@ Preference: ${formData.preference}`;
 
     const handleContinue = () => {
         const message = getTemplateMessage();
-        navigator.clipboard.writeText(message);
         setCopied(true);
-        setTimeout(() => {
-            window.open('https://chat.whatsapp.com/DgRDyrOC2EKGjypHWazXiF?mode=gi_t', '_blank');
+        
+        const redirect = () => {
+            window.location.href = 'https://chat.whatsapp.com/DgRDyrOC2EKGjypHWazXiF?mode=gi_t';
             setIsPopupOpen(false);
             setCopied(false);
-        }, 1500);
+        };
+
+        const copyWithFallback = async () => {
+            if (navigator.clipboard && window.isSecureContext) {
+                try {
+                    await navigator.clipboard.writeText(message);
+                    return;
+                } catch (err) {
+                    console.error('Clipboard API failed', err);
+                }
+            }
+            
+            // Fallback for older iOS / browsers
+            const textArea = document.createElement("textarea");
+            textArea.value = message;
+            textArea.style.position = "fixed";
+            textArea.style.left = "-999999px";
+            textArea.style.top = "-999999px";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            try {
+                document.execCommand('copy');
+            } catch (err) {
+                console.error('Fallback copy failed', err);
+            }
+            document.body.removeChild(textArea);
+        };
+
+        copyWithFallback().finally(() => {
+            setTimeout(redirect, 1500);
+        });
     };
 
     return (

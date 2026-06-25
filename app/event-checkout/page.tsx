@@ -40,18 +40,40 @@ function CheckoutForm() {
         const whatsappUrl = "https://chat.whatsapp.com/DgRDyrOC2EKGjypHWazXiF?mode=gi_t";
 
         const redirect = () => {
-            setTimeout(() => {
-                window.open(whatsappUrl, '_blank');
-                setIsSubmitting(false);
-                router.push('/');
-            }, 500);
+            setIsSubmitting(false);
+            window.location.href = whatsappUrl;
         };
 
-        if (navigator.clipboard && window.isSecureContext) {
-            navigator.clipboard.writeText(message).then(redirect).catch(redirect);
-        } else {
-            redirect();
-        }
+        const copyWithFallback = async () => {
+            if (navigator.clipboard && window.isSecureContext) {
+                try {
+                    await navigator.clipboard.writeText(message);
+                    return;
+                } catch (err) {
+                    console.error('Clipboard API failed', err);
+                }
+            }
+            
+            // Fallback for older iOS / browsers
+            const textArea = document.createElement("textarea");
+            textArea.value = message;
+            textArea.style.position = "fixed"; // Prevent scrolling to bottom
+            textArea.style.left = "-999999px";
+            textArea.style.top = "-999999px";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            try {
+                document.execCommand('copy');
+            } catch (err) {
+                console.error('Fallback copy failed', err);
+            }
+            document.body.removeChild(textArea);
+        };
+
+        copyWithFallback().finally(() => {
+            setTimeout(redirect, 300);
+        });
     };
 
     return (
