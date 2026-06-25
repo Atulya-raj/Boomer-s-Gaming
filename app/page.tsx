@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLocation } from "./context/LocationContext";
 import Preloader from "./components/Preloader";
 import LocationSelector from "./components/LocationSelector";
@@ -21,6 +21,23 @@ export default function Home() {
     setLocation(loc);
     setIsReady(true);
   };
+
+  // Lock body scroll and prevent iOS bounce while preloader or location selector is active
+  useEffect(() => {
+    if (isLoading || !location) {
+      document.body.style.overflow = 'hidden';
+      // Disable touch actions on the body to prevent Safari rubber-banding
+      document.body.style.touchAction = 'none'; 
+    } else {
+      document.body.style.overflow = '';
+      document.body.style.touchAction = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+      document.body.style.touchAction = '';
+    };
+  }, [isLoading, location]);
 
   return (
     <main className="min-h-screen bg-black text-white overflow-x-hidden">

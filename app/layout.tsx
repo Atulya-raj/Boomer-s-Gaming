@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${outfit.variable} antialiased bg-black text-white overflow-x-hidden`}
+        className={`${outfit.variable} antialiased bg-black text-white overflow-x-hidden overscroll-none`}
       >
         <LocationProvider>
           <ReactLenis root>
