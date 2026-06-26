@@ -9,58 +9,37 @@ interface PreloaderProps {
 
 const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
     const [progress, setProgress] = useState(0);
-    const totalFrames = 121; // Total number of frames
 
     useEffect(() => {
-        let loadedCount = 0;
-        const images: HTMLImageElement[] = [];
-
-        const updateProgress = () => {
-            loadedCount++;
-            const currentProgress = Math.round((loadedCount / totalFrames) * 100);
-            setProgress(currentProgress);
-
-            if (loadedCount === totalFrames) {
-                // Add a small delay for the animation to finish
+        let currentProgress = 0;
+        const interval = setInterval(() => {
+            currentProgress += Math.floor(Math.random() * 15) + 5;
+            if (currentProgress >= 100) {
+                currentProgress = 100;
+                clearInterval(interval);
                 setTimeout(() => {
                     onComplete();
-                }, 500)
+                }, 400);
             }
-        };
+            setProgress(currentProgress);
+        }, 80);
 
-        // Preload all images
-        for (let i = 1; i <= totalFrames; i++) {
-            const img = new Image();
-            const frameIndex = i.toString().padStart(3, '0');
-            img.src = `/frames/ezgif-frame-${frameIndex}.jpg`;
-            img.onload = updateProgress;
-            img.onerror = updateProgress; // Continue even if error
-            images.push(img);
-        }
-
-        // Cleanup if component unmounts (though for a preloader it likely won't until done)
-        return () => {
-            images.forEach(img => {
-                img.onload = null;
-                img.onerror = null;
-            });
-        }
-
+        return () => clearInterval(interval);
     }, [onComplete]);
 
     return (
         <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black text-white touch-none">
-            <div className="text-4xl font-bold mb-4 tracking-widest animate-pulse text-neon-blue">
+            <div className="text-4xl font-bold mb-4 tracking-widest animate-pulse text-cyan-400">
                 BOOMER'S
             </div>
-            <div className="w-64 h-2 bg-gray-800 rounded-full overflow-hidden">
+            <div className="w-64 max-w-[80vw] h-2 bg-white/10 rounded-full overflow-hidden">
                 <div
-                    className="h-full bg-blue-500 transition-all duration-75 ease-out"
+                    className="h-full bg-cyan-500 transition-all duration-75 ease-out shadow-[0_0_10px_rgba(34,211,238,0.5)]"
                     style={{ width: `${progress}%` }}
                 />
             </div>
-            <div className="mt-2 text-sm font-mono text-gray-400">
-                LOADING SYSTEM... {progress}%
+            <div className="mt-4 text-sm font-mono text-gray-400 tracking-widest">
+                INITIALIZING... {progress}%
             </div>
         </div>
     );

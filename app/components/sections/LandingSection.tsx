@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import Image from 'next/image';
@@ -16,6 +16,38 @@ const LandingSection = ({ location }: LandingSectionProps) => {
     const cardsRef = useRef<HTMLDivElement>(null);
     const indicatorRef = useRef<HTMLDivElement>(null);
     const bgRef = useRef<HTMLDivElement>(null);
+    const videoRef = useRef<HTMLVideoElement>(null);
+    const [isMuted, setIsMuted] = useState(true);
+    const [isPlaying, setIsPlaying] = useState(true);
+
+    const togglePlay = () => {
+        if (videoRef.current) {
+            if (videoRef.current.paused) {
+                const playPromise = videoRef.current.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        setIsPlaying(true);
+                    }).catch(error => {
+                        console.log("Video play prevented:", error);
+                    });
+                } else {
+                    setIsPlaying(true);
+                }
+            } else {
+                videoRef.current.pause();
+                setIsPlaying(false);
+            }
+        }
+    };
+
+    const toggleMute = (e: React.MouseEvent) => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (videoRef.current) {
+            videoRef.current.muted = !videoRef.current.muted;
+            setIsMuted(videoRef.current.muted);
+        }
+    };
 
     useGSAP(() => {
         const tl = gsap.timeline();
@@ -59,6 +91,7 @@ const LandingSection = ({ location }: LandingSectionProps) => {
                     src="/images/landing.png"
                     alt="Boomer's Gaming Lounge"
                     fill
+                    sizes="100vw"
                     className="object-cover brightness-105"
                     priority
                 />
@@ -76,7 +109,7 @@ const LandingSection = ({ location }: LandingSectionProps) => {
                         ref={titleRef}
                         src="/images/logo.png"
                         alt="Boomer's Gaming"
-                        className="w-24 md:w-40 lg:w-[14rem] object-contain mb-6 drop-shadow-[0_4px_20px_rgba(0,255,255,0.2)]"
+                        className="w-56 md:w-64 lg:w-80 object-contain mb-6 drop-shadow-[0_4px_20px_rgba(0,255,255,0.2)]"
                     />
 
                     <p
@@ -96,11 +129,59 @@ const LandingSection = ({ location }: LandingSectionProps) => {
                             : 'border-purple-500/30 shadow-[0_0_40px_rgba(168,85,247,0.15)] hover:shadow-[0_0_60px_rgba(168,85,247,0.3)] hover:border-purple-400/60'
                     }`}>
                         {/* Video Overlay Gradient */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent z-10 transition-opacity duration-500 group-hover:opacity-70"></div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent z-10 transition-opacity duration-500 group-hover:opacity-70 pointer-events-none"></div>
 
-                        {/* Static Placeholder */}
-                        <div className="w-full h-full aspect-video md:aspect-[21/9] bg-black/80 flex flex-col items-center justify-center opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700">
-                            <span className="text-white/40 text-sm md:text-xl font-bold tracking-[0.3em] uppercase border border-white/20 px-6 py-3 rounded-xl backdrop-blur-md">TRAILER PLACEHOLDER</span>
+                        {/* Video Element */}
+                        <div 
+                            onClick={togglePlay}
+                            className="w-full h-full aspect-video md:aspect-[21/9] bg-black/80 flex flex-col items-center justify-center opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 relative cursor-pointer"
+                        >
+                            {location && (
+                                <video
+                                    ref={videoRef}
+                                    key={location}
+                                    autoPlay
+                                    loop
+                                    muted={isMuted}
+                                    playsInline
+                                    preload="metadata"
+                                    className="w-full h-full object-cover"
+                                >
+                                    <source src={`/videos/${location}-trailer.mp4`} type="video/mp4" />
+                                </video>
+                            )}
+
+                            {/* Centered Play Overlay when paused */}
+                            {!isPlaying && (
+                                <div className="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-[2px] z-20">
+                                    <div className="w-16 h-16 md:w-20 md:h-20 bg-cyan-500/80 backdrop-blur-md rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(34,211,238,0.5)] border border-cyan-400/50 hover:scale-110 transition-transform duration-300">
+                                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" className="text-white ml-2">
+                                            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                                        </svg>
+                                    </div>
+                                </div>
+                            )}
+                            
+                            {/* Unmute Button Overlay */}
+                            <button
+                                onClick={toggleMute}
+                                className="absolute top-4 right-4 z-30 p-2 md:p-3 bg-black/40 hover:bg-black/60 backdrop-blur-md border border-white/20 rounded-full text-white transition-all duration-300 hover:scale-110 group/btn"
+                                aria-label={isMuted ? "Unmute video" : "Mute video"}
+                            >
+                                {isMuted ? (
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="md:w-5 md:h-5 w-4 h-4">
+                                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                                        <line x1="23" y1="9" x2="17" y2="15"></line>
+                                        <line x1="17" y1="9" x2="23" y2="15"></line>
+                                    </svg>
+                                ) : (
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="md:w-5 md:h-5 w-4 h-4 text-cyan-400 group-hover/btn:text-cyan-300">
+                                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                                        <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                                        <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+                                    </svg>
+                                )}
+                            </button>
                         </div>
 
                         {/* Title and Overlay Info */}

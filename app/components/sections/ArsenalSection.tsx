@@ -59,7 +59,7 @@ const ArsenalSection = () => {
             <div ref={containerRef} className="relative min-h-screen flex items-center justify-center py-16 md:py-24 px-4 md:px-8 overflow-hidden">
                 {/* Background */}
                 <div className="absolute inset-0 z-0 pointer-events-none">
-                    <Image src="/images/gaming.png" alt="Gaming Setup" fill className="object-cover" />
+                    <Image src="/images/gaming.png" alt="Gaming Setup" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
                     <div className="absolute inset-0 bg-black/75 backdrop-blur-[2px]" />
                     <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black" />
                     {/* NVIDIA green ambient glow */}

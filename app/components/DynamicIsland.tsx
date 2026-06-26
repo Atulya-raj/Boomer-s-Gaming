@@ -42,7 +42,7 @@ const DynamicIsland = () => {
     if (!isReady) return null;
 
     return (
-        <div className="fixed top-6 left-1/2 -translate-x-1/2 z-[100] flex justify-center w-full max-w-[95vw] md:max-w-2xl pointer-events-none">
+        <div className="fixed top-[max(1.5rem,env(safe-area-inset-top))] left-1/2 -translate-x-1/2 z-[100] flex justify-center w-full max-w-[95vw] md:max-w-2xl pointer-events-none">
             <div
                 onMouseEnter={() => setIsExpanded(true)}
                 onMouseLeave={() => setIsExpanded(false)}
@@ -54,7 +54,7 @@ const DynamicIsland = () => {
                     shadow-[0_10px_40px_-10px_rgba(0,0,0,0.8)] rounded-[32px]
                     ${isExpanded ? 'w-full md:w-[520px]' : 'w-32 md:w-40 delay-100'}
                 `}
-                style={{ height: isExpanded ? '270px' : '40px' }}
+                style={{ height: isExpanded ? 'min(270px, 80vh)' : '44px' }}
             >
                 {/* Collapsed Content */}
                 <div
@@ -76,7 +76,7 @@ const DynamicIsland = () => {
                         <div className="flex gap-2">
                             <button
                                 onClick={(e) => handleRegionSwitch(e, 'pune')}
-                                className={`px-3 py-1.5 rounded-full text-[10px] sm:text-xs font-bold transition-all duration-300 ${location === 'pune'
+                                className={`px-4 py-2.5 rounded-full text-[10px] sm:text-xs font-bold transition-all duration-300 ${location === 'pune'
                                     ? 'bg-cyan-500 text-black scale-105 shadow-[0_0_15px_rgba(34,211,238,0.4)]'
                                     : 'bg-white/10 text-white hover:bg-white/20'
                                     }`}
@@ -85,7 +85,7 @@ const DynamicIsland = () => {
                             </button>
                             <button
                                 onClick={(e) => handleRegionSwitch(e, 'coimbatore')}
-                                className={`px-3 py-1.5 rounded-full text-[10px] sm:text-xs font-bold transition-all duration-300 ${location === 'coimbatore'
+                                className={`px-4 py-2.5 rounded-full text-[10px] sm:text-xs font-bold transition-all duration-300 ${location === 'coimbatore'
                                     ? 'bg-purple-500 text-white scale-105 shadow-[0_0_15px_rgba(168,85,247,0.4)]'
                                     : 'bg-white/10 text-white hover:bg-white/20'
                                     }`}

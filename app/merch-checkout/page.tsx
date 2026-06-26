@@ -2,11 +2,13 @@
 
 import React, { useState, FormEvent, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
+import { useLocation } from '../context/LocationContext';
 
 function CheckoutForm() {
     const searchParams = useSearchParams();
     const router = useRouter();
     const type = searchParams.get('type');
+    const { location } = useLocation();
 
     // Default item based on type
     const itemOfInterest = type === 'build-pc' ? 'Custom PC Build' :
@@ -30,8 +32,10 @@ function CheckoutForm() {
         e.preventDefault();
         setIsSubmitting(true);
 
+        const locString = location === 'pune' ? 'Pune (Viman Nagar)' : 'Coimbatore';
         // Construct the WhatsApp message
         const message = `*New Merch Inquiry*\n\n` +
+            `*Location:* ${locString}\n` +
             `*Item:* ${itemOfInterest}\n` +
             `*Name:* ${formData.name}\n` +
             `*Phone:* ${formData.phone}\n` +
@@ -39,8 +43,8 @@ function CheckoutForm() {
             `*Description:* ${formData.description}`;
 
         // Replace with actual owner's WhatsApp API number later
-        // Currently using a placeholder number 0000000000
-        const whatsappNumber = "0000000000";
+        // Currently using a placeholder number 919000000000
+        const whatsappNumber = "919000000000";
 
         // Encode message for URL
         const encodedMessage = encodeURIComponent(message);
@@ -58,7 +62,11 @@ function CheckoutForm() {
     return (
         <div className="w-full max-w-2xl mx-auto bg-white/5 backdrop-blur-xl border border-white/10 p-8 rounded-3xl shadow-2xl">
             <h1 className="text-4xl font-black text-white mb-2 uppercase tracking-tight">Complete Your <span className="text-cyan-400">Request</span></h1>
-            <p className="text-gray-400 mb-8">You are inquiring about: <strong className="text-white">{itemOfInterest}</strong></p>
+            <p className="text-gray-400 mb-6">You are inquiring about: <strong className="text-white">{itemOfInterest}</strong></p>
+
+            <p className="text-center text-sm text-cyan-400 font-bold tracking-widest mb-8 border border-cyan-500/20 bg-cyan-500/10 py-3 rounded-xl">
+                SELECTED LOCATION: {location === 'pune' ? 'PUNE' : 'COIMBATORE'}
+            </p>
 
             <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="space-y-4">

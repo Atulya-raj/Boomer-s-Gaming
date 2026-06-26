@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
@@ -55,13 +57,14 @@ const FoodSection = () => {
     }, { scope: containerRef });
 
     return (
-        <section id="food" ref={containerRef} className="relative w-full min-h-[90vh] flex items-center justify-center py-16 md:py-20 px-4 md:px-8 bg-black">
+        <section id="food" ref={containerRef} className="relative w-full min-h-[90svh] flex items-center justify-center py-16 md:py-20 px-4 md:px-8 bg-black">
             {/* Background Image Container */}
             <div className="absolute inset-0 w-full h-full z-0 pointer-events-none overflow-hidden">
                 <Image
                     src="/images/cafe-background.jpg"
                     alt="Cafe Reception"
                     fill
+                    sizes="100vw"
                     className="object-cover opacity-60"
                 />
                 {/* Overlay gradient - significantly lighter */}
@@ -82,10 +85,8 @@ const FoodSection = () => {
                                 Level up your energy. From loaded burgers and satisfying pastas to signature mocktails, our Zomato District certified menu keeps you in the game without hitting pause.
                             </p>
                             <div className="flex justify-center">
-                                <Link href="/cafe-menu">
-                                    <button className="px-8 py-4 bg-gradient-to-r from-pink-500 hover:from-pink-600 to-orange-500 hover:to-orange-600 text-white font-bold rounded-full transition-transform hover:scale-105 active:scale-95 shadow-lg shadow-pink-500/30">
+                                <Link href="/cafe-menu" className="px-8 py-4 bg-gradient-to-r from-pink-500 hover:from-pink-600 to-orange-500 hover:to-orange-600 text-white font-bold rounded-full transition-transform hover:scale-105 active:scale-95 shadow-lg shadow-pink-500/30">
                                         VIEW MENU
-                                    </button>
                                 </Link>
                             </div>
                         </div>
@@ -99,6 +100,7 @@ const FoodSection = () => {
                                 src={cafeGalleryImages[0].src}
                                 alt={cafeGalleryImages[0].alt}
                                 fill
+                                sizes="(max-width: 768px) 100vw, 50vw"
                                 className="object-cover group-hover:scale-110 transition-transform duration-700"
                             />
                             <div className="absolute inset-0 bg-gradient-to-tr from-pink-500/20 to-transparent pointer-events-none group-hover:opacity-0 transition-opacity duration-300"></div>
@@ -110,6 +112,7 @@ const FoodSection = () => {
                                     src={img.src}
                                     alt={img.alt}
                                     fill
+                                    sizes="(max-width: 768px) 50vw, 25vw"
                                     className="object-cover group-hover:scale-110 transition-transform duration-700"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-tr from-pink-500/15 to-transparent pointer-events-none group-hover:opacity-0 transition-opacity duration-300"></div>

@@ -56,7 +56,7 @@ const EventSection = () => {
     }, { scope: containerRef });
 
     return (
-        <section id="events" ref={containerRef} className="relative w-full min-h-[90vh] py-16 md:py-24 px-4 md:px-8 bg-black">
+        <section id="events" ref={containerRef} className="relative w-full min-h-[90svh] py-16 md:py-24 px-4 md:px-8 bg-black">
             {/* Background elements */}
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
                 <div className="absolute top-[20%] right-[10%] w-[30vw] h-[30vw] min-w-[300px] min-h-[300px] rounded-full bg-purple-900/10 blur-[100px]" />
@@ -90,6 +90,7 @@ const EventSection = () => {
                                         src={card.imageUrl}
                                         alt={card.title}
                                         fill
+                                        sizes="100vw"
                                         className="object-cover transition-transform duration-700 ease-in-out group-hover:scale-110 group-hover:saturate-150"
                                     />
                                     {/* Gradient overlay */}

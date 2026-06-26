@@ -4,6 +4,8 @@ import React, { useRef, useState } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Image from 'next/image';
+import { useLocation } from '../../context/LocationContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -11,6 +13,7 @@ const RefuelSection = () => {
     const containerRef = useRef<HTMLDivElement>(null);
     const titleRef = useRef<HTMLHeadingElement>(null);
     const cardRef = useRef<HTMLDivElement>(null);
+    const { location } = useLocation();
 
     const [isPopupOpen, setIsPopupOpen] = useState(false);
     const [formData, setFormData] = useState({ name: '', people: '1', preference: 'PC' });
@@ -30,7 +33,9 @@ const RefuelSection = () => {
     }, { scope: containerRef });
 
     const getTemplateMessage = () => {
+        const locString = location === 'pune' ? 'Pune (Viman Nagar)' : 'Coimbatore';
         return `Hi Boomer's Team! I'd like to book for Happy Hours.
+Location: ${locString}
 Name: ${formData.name}
 Number of People: ${formData.people}
 Preference: ${formData.preference}`;
@@ -84,7 +89,7 @@ Preference: ${formData.preference}`;
             <div className="absolute inset-0 z-0 overflow-hidden bg-zinc-950">
                 <div className="absolute top-1/4 left-1/4 w-[30rem] md:w-[45rem] h-[30rem] md:h-[45rem] bg-fuchsia-600/30 rounded-full blur-[100px] md:blur-[150px] mix-blend-screen"></div>
                 <div className="absolute bottom-0 right-1/4 w-[25rem] md:w-[40rem] h-[25rem] md:h-[40rem] bg-purple-600/30 rounded-full blur-[100px] md:blur-[120px] mix-blend-screen"></div>
-                <img src="/images/happy-hour-promo.jpg" alt="Happy Hours Promo" className="w-full h-full object-cover opacity-20 mix-blend-overlay blur-sm scale-105" />
+                <Image src="/images/happy-hour-promo.jpg" alt="Happy Hours Promo" fill sizes="100vw" className="object-cover opacity-20 mix-blend-overlay blur-sm scale-105" />
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-zinc-950/70 to-zinc-950/95"></div>
             </div>
 
@@ -132,7 +137,7 @@ Preference: ${formData.preference}`;
                     </div>
 
                     <div className="flex-1 w-full h-64 md:h-[28rem] relative flex items-center justify-center rounded-2xl overflow-hidden border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] group">
-                        <img src="/images/happy-hour-interior.jpg" alt="Gaming Cafe Interior" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                        <Image src="/images/happy-hour-interior.jpg" alt="Gaming Cafe Interior" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none"></div>
                         
                         <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end pointer-events-none z-20">
@@ -157,7 +162,10 @@ Preference: ${formData.preference}`;
                             </svg>
                         </button>
                         
-                        <h3 className="text-2xl font-bold text-white mb-6 text-center">Book Your Slot</h3>
+                        <h3 className="text-2xl font-bold text-white mb-2 text-center">Book Your Slot</h3>
+                        <p className="text-center text-sm text-purple-400 font-bold tracking-widest mb-6">
+                            SELECTED LOCATION: {location === 'pune' ? 'PUNE' : 'COIMBATORE'}
+                        </p>
                         
                         <div className="space-y-4">
                             <div>

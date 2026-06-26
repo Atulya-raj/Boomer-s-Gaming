@@ -16,6 +16,13 @@ export const metadata: Metadata = {
   description: "Enter the Cloud",
 };
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  viewportFit: "cover",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -27,7 +34,7 @@ export default function RootLayout({
         className={`${outfit.variable} antialiased bg-black text-white overflow-x-hidden overscroll-none`}
       >
         <LocationProvider>
-          <ReactLenis root>
+          <ReactLenis root options={{ smoothTouch: true }}>
             <DynamicIsland />
             {children}
           </ReactLenis>

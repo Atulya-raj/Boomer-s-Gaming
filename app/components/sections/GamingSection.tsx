@@ -164,7 +164,7 @@ const GamingSection = () => {
             <div ref={pcGamesRef} className="relative py-16 md:py-24 px-4 md:px-8 overflow-hidden">
                 {/* Full-section background — game art collage */}
                 <div className="absolute inset-0 z-0 pointer-events-none">
-                    <Image src="/images/games/pc-games-banner.png" alt="PC Games background" fill className="object-cover scale-110 blur-[2px]" />
+                    <Image src="/images/games/pc-games-banner.png" alt="PC Games background" fill sizes="100vw" className="object-cover scale-110 blur-[2px]" />
                     <div className="absolute inset-0 bg-black/75" />
                     <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black" />
                 </div>
@@ -209,7 +209,7 @@ const GamingSection = () => {
             <div ref={ps5Ref} className="relative py-16 md:py-24 px-4 md:px-8 overflow-hidden">
                 {/* Full-section background — PS5 game art collage */}
                 <div className="absolute inset-0 z-0 pointer-events-none">
-                    <Image src="/images/games/ps5-games-banner.png" alt="PS5 Games background" fill className="object-cover scale-110 blur-[2px]" />
+                    <Image src="/images/games/ps5-games-banner.png" alt="PS5 Games background" fill sizes="100vw" className="object-cover scale-110 blur-[2px]" />
                     <div className="absolute inset-0 bg-black/75" />
                     <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black" />
                 </div>
@@ -279,7 +279,7 @@ const GamingSection = () => {
                             </p>
 
                             <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl aspect-video mb-6">
-                                <Image src="/images/games/sim-racing.png" alt="Logitech Sim Racing Setup" fill className="object-cover" />
+                                <Image src="/images/games/sim-racing.png" alt="Logitech Sim Racing Setup" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                                 <div className="absolute bottom-0 left-0 p-5">
                                     <p className="text-white font-black text-lg uppercase tracking-wider mb-1">Cockpit Ready</p>

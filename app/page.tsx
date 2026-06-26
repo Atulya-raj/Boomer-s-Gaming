@@ -1,18 +1,20 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useLenis } from 'lenis/react';
 import { useLocation } from "./context/LocationContext";
 import Preloader from "./components/Preloader";
 import LocationSelector from "./components/LocationSelector";
 import LandingSection from "./components/sections/LandingSection";
-import RefuelSection from "./components/sections/RefuelSection";
-import GamingSection from "./components/sections/GamingSection";
-import FoodSection from "./components/sections/FoodSection";
-import EventSection from "./components/sections/EventSection";
-import ArsenalSection from "./components/sections/ArsenalSection";
-import MerchSection from "./components/sections/MerchSection";
-import FooterSection from "./components/sections/FooterSection";
+import dynamic from 'next/dynamic';
+
+const RefuelSection = dynamic(() => import("./components/sections/RefuelSection"));
+const GamingSection = dynamic(() => import("./components/sections/GamingSection"));
+const FoodSection = dynamic(() => import("./components/sections/FoodSection"));
+const EventSection = dynamic(() => import("./components/sections/EventSection"));
+const ArsenalSection = dynamic(() => import("./components/sections/ArsenalSection"));
+const MerchSection = dynamic(() => import("./components/sections/MerchSection"));
+const FooterSection = dynamic(() => import("./components/sections/FooterSection"));
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -34,11 +36,13 @@ export default function Home() {
     }
   }, [isLoading, location, lenis]);
 
+  const handlePreloaderComplete = useCallback(() => setIsLoading(false), []);
+
   return (
     <main className="min-h-screen bg-black text-white overflow-x-hidden">
       {/* Step 1: Preloader */}
       {isLoading && (
-        <Preloader onComplete={() => setIsLoading(false)} />
+        <Preloader onComplete={handlePreloaderComplete} />
       )}
 
       {/* Step 2: Location Selector (after loading, before site) */}

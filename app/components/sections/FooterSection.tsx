@@ -26,13 +26,14 @@ const FooterSection = () => {
     }, { scope: containerRef });
 
     return (
-        <footer ref={containerRef} className="relative w-full min-h-[60vh] flex flex-col justify-end bg-black">
+        <footer ref={containerRef} className="relative w-full min-h-[60svh] flex flex-col justify-end bg-black">
             {/* Background Image Container */}
             <div className="absolute inset-0 w-full h-full z-0 pointer-events-none overflow-hidden">
                 <Image
                     src="/images/footer.jpeg"
                     alt="Lounge area"
                     fill
+                    sizes="100vw"
                     className="object-cover opacity-80 saturate-150 contrast-125 brightness-125"
                 />
                 {/* Overlay gradient - fades from black at top to let image show, then black at bottom */}

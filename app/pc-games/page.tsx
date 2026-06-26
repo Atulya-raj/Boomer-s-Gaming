@@ -88,7 +88,7 @@ export default function PCGamesPage() {
             <div className="absolute inset-0 pointer-events-none overflow-hidden">
                 <div className="absolute top-0 left-1/3 w-[600px] h-[600px] bg-cyan-900/10 rounded-full blur-[180px]" />
                 <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-purple-900/10 rounded-full blur-[160px]" />
-                <div className="absolute top-1/2 left-0 w-[400px] h-[400px] bg-blue-900/8 rounded-full blur-[140px]" />
+                <div className="absolute top-1/2 left-0 w-[400px] h-[400px] bg-blue-900/10 rounded-full blur-[140px]" />
             </div>
 
             {/* Content */}

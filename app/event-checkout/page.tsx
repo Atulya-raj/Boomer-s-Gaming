@@ -2,11 +2,14 @@
 
 import React, { useState, FormEvent, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
+import Image from 'next/image';
+import { useLocation } from '../context/LocationContext';
 
 function CheckoutForm() {
     const searchParams = useSearchParams();
     const router = useRouter();
     const type = searchParams.get('type');
+    const { location } = useLocation();
 
     // Default item based on type
     const bookingType = type === 'party' ? 'Party Booking' : 'Corporate Booking';
@@ -29,8 +32,10 @@ function CheckoutForm() {
         e.preventDefault();
         setIsSubmitting(true);
 
+        const locString = location === 'pune' ? 'Pune (Viman Nagar)' : 'Coimbatore';
         // Construct the WhatsApp message
         const message = `*New Event Booking Inquiry*\n\n` +
+            `*Location:* ${locString}\n` +
             `*Booking Type:* ${bookingType}\n` +
             `*Name:* ${formData.name}\n` +
             `*WhatsApp Number:* ${formData.phone}\n` +
@@ -79,7 +84,11 @@ function CheckoutForm() {
     return (
         <div className="w-full max-w-2xl mx-auto bg-white/5 backdrop-blur-xl border border-white/10 p-8 rounded-3xl shadow-2xl">
             <h1 className="text-4xl font-black text-white mb-2 uppercase tracking-tight">Complete Your <span className="text-purple-500">Booking</span></h1>
-            <p className="text-gray-400 mb-8">You are inquiring about: <strong className="text-white">{bookingType}</strong></p>
+            <p className="text-gray-400 mb-6">You are inquiring about: <strong className="text-white">{bookingType}</strong></p>
+            
+            <p className="text-center text-sm text-purple-400 font-bold tracking-widest mb-8 border border-purple-500/20 bg-purple-500/10 py-3 rounded-xl">
+                SELECTED LOCATION: {location === 'pune' ? 'PUNE' : 'COIMBATORE'}
+            </p>
 
             <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="space-y-4">
@@ -198,7 +207,7 @@ export default function CheckoutPage() {
 
             {/* Background elements */}
             <div className="absolute inset-0 w-full h-full z-0 pointer-events-none">
-                <img src="/images/booking-bg.png" alt="Gaming Setup Background" className="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-screen" />
+                <Image src="/images/booking-bg.png" alt="Gaming Setup Background" fill sizes="100vw" className="object-cover opacity-40 mix-blend-screen" />
                 <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/90"></div>
                 <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-600/30 rounded-full blur-[120px] mix-blend-screen"></div>
                 <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-600/20 rounded-full blur-[120px] mix-blend-screen"></div>

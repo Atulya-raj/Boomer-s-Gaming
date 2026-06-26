@@ -22,6 +22,10 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  min-height: 100svh;
+  min-height: -webkit-fill-available;
 }
 
 /* Hide native scrollbars for a premium cinematic layout */
@@ -29,7 +33,7 @@ body {
   display: none;
 }
 
-* {
+html, body {
   -ms-overflow-style: none;
   /* IE and Edge */
   scrollbar-width: none;
