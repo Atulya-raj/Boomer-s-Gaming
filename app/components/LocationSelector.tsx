@@ -115,7 +115,7 @@ const LocationSelector: React.FC<LocationSelectorProps> = ({ onSelect }) => {
                     >
                         <div className="relative aspect-[16/10] bg-gradient-to-br from-cyan-950/60 via-black to-slate-900/60 overflow-hidden">
                             {/* Decorative background elements */}
-                            <div className="absolute inset-0 bg-[url('/images/landing.png')] bg-cover bg-center opacity-30 group-hover:opacity-50 group-hover:scale-110 transition-all duration-700" />
+                            <div className="absolute inset-0 bg-[url('/images/pune-arena.jpg')] bg-cover bg-center opacity-30 group-hover:opacity-50 group-hover:scale-110 transition-all duration-700" />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent" />
                             
                             {/* Animated border glow on hover */}
@@ -153,7 +153,7 @@ const LocationSelector: React.FC<LocationSelectorProps> = ({ onSelect }) => {
                     >
                         <div className="relative aspect-[16/10] bg-gradient-to-br from-purple-950/60 via-black to-indigo-900/60 overflow-hidden">
                             {/* Decorative background elements */}
-                            <div className="absolute inset-0 bg-[url('/images/landing.png')] bg-cover bg-center opacity-30 group-hover:opacity-50 group-hover:scale-110 transition-all duration-700" />
+                            <div className="absolute inset-0 bg-[url('/images/coimbatore-arena.jpeg')] bg-cover bg-center opacity-30 group-hover:opacity-50 group-hover:scale-110 transition-all duration-700" />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent" />
 
                             {/* Animated border glow on hover */}

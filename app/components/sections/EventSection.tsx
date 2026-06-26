@@ -11,14 +11,14 @@ const EventCards = [
     {
         title: "Corporate Booking",
         description: "Book our premium gaming rigs or consoles for your team. Enjoy a distraction-free environment for team-building or an epic gaming session.",
-        imageUrl: "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop", // Placeholder image
+        imageUrl: "/images/corporate-booking.jpg",
         type: "corporate",
         color: "blue"
     },
     {
         title: "Party Booking",
         description: "Birthdays, Corporate Events, or just an epic gaming night with the squad. Book the ultimate immersive experience for your group today.",
-        imageUrl: "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=2071&auto=format&fit=crop", // Placeholder image
+        imageUrl: "/images/party-booking.jpg",
         type: "party",
         color: "purple"
     }

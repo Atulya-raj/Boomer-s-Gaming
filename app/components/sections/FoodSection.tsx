@@ -85,9 +85,9 @@ const FoodSection = () => {
                                 Level up your energy. From loaded burgers and satisfying pastas to signature mocktails, our Zomato District certified menu keeps you in the game without hitting pause.
                             </p>
                             <div className="flex justify-center">
-                                <Link href="/cafe-menu" className="px-8 py-4 bg-gradient-to-r from-pink-500 hover:from-pink-600 to-orange-500 hover:to-orange-600 text-white font-bold rounded-full transition-transform hover:scale-105 active:scale-95 shadow-lg shadow-pink-500/30">
+                                <a href="https://docs.google.com/spreadsheets/d/1YUhqsnEe7z2WygTlMWbrHNPG0nV_OoXINlzyKIkKWiY/edit?usp=sharing" target="_blank" rel="noopener noreferrer" className="px-8 py-4 bg-gradient-to-r from-pink-500 hover:from-pink-600 to-orange-500 hover:to-orange-600 text-white font-bold rounded-full transition-transform hover:scale-105 active:scale-95 shadow-lg shadow-pink-500/30">
                                         VIEW MENU
-                                </Link>
+                                </a>
                             </div>
                         </div>
                     </div>

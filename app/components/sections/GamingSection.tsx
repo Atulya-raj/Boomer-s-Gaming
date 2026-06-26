@@ -279,7 +279,7 @@ const GamingSection = () => {
                             </p>
 
                             <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl aspect-video mb-6">
-                                <Image src="/images/games/sim-racing.png" alt="Logitech Sim Racing Setup" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
+                                <Image src="/images/games/simracing.jpg" alt="Logitech Sim Racing Setup" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                                 <div className="absolute bottom-0 left-0 p-5">
                                     <p className="text-white font-black text-lg uppercase tracking-wider mb-1">Cockpit Ready</p>
