@@ -34,7 +34,7 @@ export default function RootLayout({
         className={`${outfit.variable} antialiased bg-black text-white overflow-x-hidden overscroll-none`}
       >
         <LocationProvider>
-          <ReactLenis root options={{ smoothTouch: true }}>
+          <ReactLenis root>
             <DynamicIsland />
             {children}
           </ReactLenis>
