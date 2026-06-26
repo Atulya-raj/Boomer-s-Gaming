@@ -25,7 +25,6 @@ body {
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
   min-height: 100svh;
-  min-height: -webkit-fill-available;
 }
 
 /* Hide native scrollbars for a premium cinematic layout */
@@ -35,7 +34,26 @@ body {
 
 html, body {
   -ms-overflow-style: none;
-  /* IE and Edge */
   scrollbar-width: none;
-  /* Firefox */
+}
+
+/* Lenis Recommended CSS for smooth scrolling and to fix mobile stuck issues */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
 }
