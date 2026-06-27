@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import gsap from 'gsap';
+
 
 interface PreloaderProps {
     onComplete: () => void;
@@ -30,7 +30,7 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
     return (
         <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black text-white touch-none">
             <div className="text-4xl font-bold mb-4 tracking-widest animate-pulse text-cyan-400">
-                BOOMER'S
+                BOOMER&apos;S
             </div>
             <div className="w-64 max-w-[80vw] h-2 bg-white/10 rounded-full overflow-hidden">
                 <div

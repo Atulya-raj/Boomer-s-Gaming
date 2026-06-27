@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useRef, useState } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
@@ -105,16 +107,20 @@ const LandingSection = ({ location }: LandingSectionProps) => {
 
                 {/* Hero Text */}
                 <div className="flex flex-col items-center mb-8 md:mb-16">
-                    <img
-                        ref={titleRef}
-                        src="/images/logo.png"
-                        alt="Boomer's Gaming"
-                        className="w-56 md:w-64 lg:w-80 object-contain mb-6 drop-shadow-[0_4px_20px_rgba(0,255,255,0.2)]"
-                    />
+                    <div ref={titleRef}>
+                        <Image 
+                            src="/images/logo.png" 
+                            alt="Boomers Gaming Logo" 
+                            width={320}
+                            height={320}
+                            className="w-40 md:w-60 lg:w-80 object-contain drop-shadow-[0_0_30px_rgba(0,0,0,0.8)] filter contrast-125"
+                            priority
+                        />
+                    </div>
 
                     <p
                         ref={subtitleRef}
-                        className="text-lg md:text-2xl lg:text-3xl font-bold text-cyan-400 tracking-[0.2em] md:tracking-[0.3em] text-center"
+                        className="mt-4 md:mt-6 text-lg md:text-2xl lg:text-3xl font-bold text-cyan-400 tracking-[0.2em] md:tracking-[0.3em] text-center"
                         style={{ textShadow: '0 0 10px rgba(34, 211, 238, 0.5)' }}
                     >
                         ENTER THE CLOUD

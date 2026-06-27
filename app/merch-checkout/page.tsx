@@ -42,21 +42,43 @@ function CheckoutForm() {
             `*Email:* ${formData.email}\n` +
             `*Description:* ${formData.description}`;
 
-        // Replace with actual owner's WhatsApp API number later
-        // Currently using a placeholder number 919000000000
-        const whatsappNumber = "919000000000";
+        const whatsappUrl = "https://chat.whatsapp.com/DgRDyrOC2EKGjypHWazXiF?mode=gi_t";
 
-        // Encode message for URL
-        const encodedMessage = encodeURIComponent(message);
-
-        // Create WhatsApp API URL
-        const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
-
-        // Adding slight delay for button animation effect before redirect
-        setTimeout(() => {
-            window.location.href = whatsappUrl;
+        const redirect = () => {
             setIsSubmitting(false);
-        }, 500);
+            window.location.href = whatsappUrl;
+        };
+
+        const copyWithFallback = async () => {
+            if (navigator.clipboard && window.isSecureContext) {
+                try {
+                    await navigator.clipboard.writeText(message);
+                    return;
+                } catch (err) {
+                    console.error('Clipboard API failed', err);
+                }
+            }
+            
+            // Fallback for older iOS / browsers
+            const textArea = document.createElement("textarea");
+            textArea.value = message;
+            textArea.style.position = "fixed"; // Prevent scrolling to bottom
+            textArea.style.left = "-999999px";
+            textArea.style.top = "-999999px";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            try {
+                document.execCommand('copy');
+            } catch (err) {
+                console.error('Fallback copy failed', err);
+            }
+            document.body.removeChild(textArea);
+        };
+
+        copyWithFallback().finally(() => {
+            setTimeout(redirect, 300);
+        });
     };
 
     return (
@@ -135,8 +157,8 @@ function CheckoutForm() {
                     <div>
                         <h4 className="text-white font-medium mb-1">What happens next?</h4>
                         <p className="text-sm text-gray-400 text-justify">
-                            Our team will revert you back under <strong className="text-cyan-400">24 hrs</strong>.
-                            Clicking submit will redirect you to WhatsApp to send these details directly to our team.
+                            Your inquiry details will be <strong className="text-cyan-400">copied to your clipboard</strong>.
+                            Clicking proceed will open our WhatsApp group where you can paste the message. Our team will reply under <strong className="text-cyan-400">24 hrs</strong>.
                         </p>
                     </div>
                 </div>

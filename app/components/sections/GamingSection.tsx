@@ -1,24 +1,14 @@
 'use client';
 
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
-import Link from 'next/link';
 
 gsap.registerPlugin(ScrollTrigger);
 
 // ─── Data ────────────────────────────────────────────────────
-
-const pcSpecs = [
-    { label: 'GPU', value: 'NVIDIA RTX 4090 SUPER' },
-    { label: 'CPU', value: 'Intel Core i9-14900K' },
-    { label: 'RAM', value: '32 GB DDR5 5600MHz' },
-    { label: 'Monitor', value: '27" 240Hz OLED' },
-    { label: 'Storage', value: '2TB NVMe SSD' },
-    { label: 'Cooling', value: 'Custom Liquid Loop' },
-];
 
 const pcGames = [
     { name: 'Valorant', tag: 'F2P', image: '/images/games/valorant.png' },
@@ -36,35 +26,9 @@ const ps5Games = [
     { name: 'Dirt Race 5', image: '/images/games/dirtrace.png' },
 ];
 
-const simGames = [
-    'Forza', 'Horizon 5', 'F1', 'Gran Turismo', 'Euro Truck Simulator', 'Assetto Corsa',
-];
-
 // ─── Sub-Components ──────────────────────────────────────────
 
-const NvidiaCertifiedBadge = () => (
-    <div className="relative inline-flex items-center gap-3 px-6 py-3 rounded-full border border-green-500/40 bg-green-500/10 backdrop-blur-md shadow-[0_0_30px_rgba(118,185,0,0.2)]">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-            <path d="M9.5 9.426v5.394c0 .39.216.748.558.932l4.5 2.476c.334.184.742.184 1.076 0l4.5-2.476c.342-.184.558-.542.558-.932V9.426c0-.39-.216-.748-.558-.932l-4.5-2.476a1.073 1.073 0 00-1.076 0l-4.5 2.476A1.074 1.074 0 009.5 9.426z" fill="#76B900" />
-            <path d="M3.5 6.426v5.394c0 .39.216.748.558.932l4.5 2.476c.334.184.742.184 1.076 0" stroke="#76B900" strokeWidth="1.5" strokeLinecap="round" />
-        </svg>
-        <div>
-            <span className="text-green-400 font-black text-sm tracking-[0.2em] uppercase block">NVIDIA</span>
-            <span className="text-green-300/80 text-[10px] tracking-[0.15em] uppercase font-bold">Certified Center</span>
-        </div>
-        <div className="absolute -inset-[1px] rounded-full bg-gradient-to-r from-green-500/20 via-transparent to-green-500/20 blur-sm -z-10 animate-pulse" />
-    </div>
-);
 
-const LogitechBadge = () => (
-    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-cyan-500/30 bg-cyan-500/5 backdrop-blur-md text-cyan-400 text-xs font-bold tracking-widest uppercase">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-            <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5" fill="none" />
-            <circle cx="12" cy="12" r="4" fill="currentColor" />
-        </svg>
-        Co-powered by Logitech
-    </div>
-);
 
 const GameCard = ({ name, tag, image, index }: { name: string; tag?: string; image: string; index: number }) => (
     <div

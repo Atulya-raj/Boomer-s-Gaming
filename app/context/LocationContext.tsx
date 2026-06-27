@@ -21,15 +21,14 @@ const LocationContext = createContext<LocationContextType>({
 export const LocationProvider = ({ children }: { children: ReactNode }) => {
     const [location, setLocation] = useState<Location | null>(null);
     const [isReady, setIsReady] = useState(false);
-    const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
-        setMounted(true);
         const storedLoc = localStorage.getItem('boomers-location') as Location;
         if (storedLoc) {
             setLocation(storedLoc);
             setIsReady(true);
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const handleSetLocation = (loc: Location) => {
@@ -37,10 +36,7 @@ export const LocationProvider = ({ children }: { children: ReactNode }) => {
         localStorage.setItem('boomers-location', loc);
     };
 
-    if (!mounted) {
-        return null; // Prevents hydration mismatch on initial render
-    }
-
+    // Removed mounted check to allow hydration with default state and eliminate flash
     return (
         <LocationContext.Provider value={{ location, setLocation: handleSetLocation, isReady, setIsReady }}>
             {children}

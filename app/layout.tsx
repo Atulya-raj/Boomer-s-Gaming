@@ -14,6 +14,16 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   title: "Boomer's Gaming",
   description: "Enter the Cloud",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "Boomer's Gaming",
+  },
+  icons: {
+    icon: "/icon.png",
+    apple: "/icon.png",
+  },
+  manifest: "/manifest.json",
 };
 
 export const viewport = {

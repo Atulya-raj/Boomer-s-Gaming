@@ -1,8 +1,9 @@
+"use client";
+
 import React, { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Image from 'next/image';
 import Link from 'next/link';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -109,7 +110,7 @@ const MerchSection = () => {
                             </div>
                             <div className="p-8 flex-grow flex flex-col justify-center">
                                 <h3 className="text-3xl font-bold text-white mb-3 group-hover:text-red-400 transition-colors">T-SHIRTS</h3>
-                                <p className="text-gray-400 mb-6 font-medium">Rep the Boomer's Gaming brand. Premium quality cotton tees with exclusive esports designs.</p>
+                                <p className="text-gray-400 mb-6 font-medium">Rep the Boomer&apos;s Gaming brand. Premium quality cotton tees with exclusive esports designs.</p>
                                 <div className="mt-auto flex items-center text-red-400 font-bold uppercase tracking-wide text-sm">
                                     <span>Grab Yours</span>
                                     <svg className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>

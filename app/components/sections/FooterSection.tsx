@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
@@ -55,27 +57,51 @@ const FooterSection = () => {
                     </div>
                 </div>
 
-                <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-400 gap-8">
-                    <div className="text-center md:text-left">
-                        <h4 className="text-white font-bold mb-2 tracking-wider">LOCATIONS</h4>
-                        <p className="hover:text-cyan-400 transition-colors cursor-pointer">Viman Nagar, Pune</p>
-                        <p className="hover:text-cyan-400 transition-colors cursor-pointer mt-1">Coimbatore, TN</p>
+                <div className="flex flex-col md:flex-row justify-between items-center md:items-start text-sm text-gray-400 gap-10 md:gap-8 w-full">
+                    <div className="flex-1 flex flex-col items-center md:items-start text-center md:text-left w-full">
+                        <h4 className="text-white font-bold mb-3 md:mb-2 tracking-wider">LOCATIONS</h4>
+                        <a 
+                            href="https://www.google.com/maps/search/?api=1&query=Boomers+Gaming+Cafe,+Viman+Nagar,+Pune" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="block hover:text-cyan-400 transition-colors cursor-pointer"
+                        >
+                            Viman Nagar, Pune
+                        </a>
+                        <a 
+                            href="https://www.google.com/maps/search/?api=1&query=Boomers+Gaming+Cafe,+Coimbatore,+TN" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="block hover:text-cyan-400 transition-colors cursor-pointer mt-2 md:mt-1"
+                        >
+                            Coimbatore, TN
+                        </a>
                     </div>
 
-                    <div className="flex flex-col items-center text-center">
-                        <h2 className="text-2xl font-black tracking-tighter text-white mb-2">BOOMER'S</h2>
+                    <div className="flex-1 flex flex-col items-center text-center w-full">
+                        <h2 className="text-2xl font-black tracking-tighter text-white mb-1 md:mb-2">BOOMER&apos;S</h2>
                         <span className="text-xs tracking-[0.2em] text-cyan-500">GAMING & CAFE</span>
-                        <div className="mt-8">
-                            © 2026 BOOMER'S. All Rights Reserved.
-                        </div>
+                        <p className="mt-4 text-[10px] md:text-xs text-gray-500 max-w-[200px] md:max-w-none">
+                            &copy; {new Date().getFullYear()} Boomer&apos;s Gaming. All rights reserved.
+                        </p>
                     </div>
 
-                    <div className="flex flex-col text-center md:text-right">
-                        <h4 className="text-white font-bold mb-2 tracking-wider">CONNECT</h4>
-                        <div className="flex flex-col gap-2">
-                            <a href="#" className="hover:text-pink-500 transition-colors">Instagram</a>
-                            <a href="#" className="hover:text-red-500 transition-colors">YouTube</a>
-                            <a href="#" className="hover:text-indigo-400 transition-colors">Discord</a>
+                    <div className="flex-1 flex flex-col items-center md:items-end text-center md:text-right w-full">
+                        <h4 className="text-white font-bold mb-3 md:mb-2 tracking-wider">CONNECT</h4>
+                        <div className="flex flex-col gap-2 items-center md:items-end">
+                            <a 
+                                href="https://www.instagram.com/boomersgamingcafe_official/" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-2 hover:text-pink-500 transition-colors"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+                                </svg>
+                                Instagram
+                            </a>
                         </div>
                     </div>
                 </div>
