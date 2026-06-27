@@ -29,7 +29,7 @@ const pcGames = [
 ];
 
 const ps5Games = [
-    { name: 'FIFA', image: '/images/games/fifa.png' },
+    { name: 'FIFA', image: '/images/games/fifa_v2.png' },
     { name: 'WWE', image: '/images/games/wwe.png' },
     { name: 'Tekken', image: '/images/games/tekken.png' },
     { name: 'Mortal Kombat', image: '/images/games/mortalkombat.png' },

@@ -31,10 +31,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${outfit.variable} antialiased bg-black text-white overflow-x-hidden overscroll-none`}
+        className={`${outfit.variable} antialiased bg-black text-white overflow-x-hidden touch-pan-y`}
       >
         <LocationProvider>
-          <ReactLenis root>
+          <ReactLenis root options={{ syncTouch: true }}>
             <DynamicIsland />
             {children}
           </ReactLenis>
