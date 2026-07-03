@@ -103,17 +103,17 @@ const LandingSection = ({ location }: LandingSectionProps) => {
             </div>
 
             {/* Content Container */}
-            <div className="relative z-10 flex flex-col items-center w-full max-w-7xl px-4 lg:px-8 mt-6 mb-10 md:mt-16 md:mb-24">
+            <div className="relative z-10 flex flex-col items-center w-full max-w-7xl px-4 lg:px-8 mt-0 mb-10 md:mt-16 md:mb-24">
 
                 {/* Hero Text */}
-                <div className="flex flex-col items-center mb-8 md:mb-16">
+                <div className="flex flex-col items-center mb-8 md:mb-16 -mt-8 md:mt-0">
                     <div ref={titleRef}>
                         <Image 
                             src="/images/logo.png" 
                             alt="Boomers Gaming Logo" 
-                            width={320}
-                            height={320}
-                            className="w-40 md:w-60 lg:w-80 object-contain drop-shadow-[0_0_30px_rgba(0,0,0,0.8)] filter contrast-125"
+                            width={400}
+                            height={400}
+                            className="w-[300px] md:w-[300px] lg:w-[400px] object-contain filter brightness-150 contrast-150 saturate-150"
                             priority
                         />
                     </div>
