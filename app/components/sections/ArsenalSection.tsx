@@ -8,20 +8,26 @@ import Image from 'next/image';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const pcSpecs = [
-    { label: 'GPU', value: 'NVIDIA RTX 4090 SUPER' },
-    { label: 'CPU', value: 'Intel Core i9-14900K' },
-    { label: 'RAM', value: '32 GB DDR5 5600MHz' },
-    { label: 'Monitor', value: '27" 240Hz OLED' },
-    { label: 'Storage', value: '2TB NVMe SSD' },
-    { label: 'Cooling', value: 'Custom Liquid Loop' },
+const puneSpecs = [
+    { label: 'GPU', value: 'Up to NVIDIA RTX 4070 SUPER' },
+    { label: 'CPU', value: 'Up to AMD Ryzen 7 9700X' },
+    { label: 'RAM', value: '32 GB DDR5 5200MHz' },
+    { label: 'Storage', value: '1TB Gen4 NVMe SSD' },
+    { label: 'Monitor', value: '240Hz Refresh Rate' },
+];
+
+const coimbatoreSpecs = [
+    { label: 'GPU', value: 'Up to NVIDIA RTX 3070' },
+    { label: 'CPU', value: 'Up to AMD Ryzen 5 5600X' },
+    { label: 'RAM', value: '16 GB DDR4 3600MHz' },
+    { label: 'Storage', value: '512GB NVMe SSD' },
+    { label: 'Monitor', value: '180Hz Refresh Rate' },
 ];
 
 const NvidiaCertifiedBadge = () => (
     <div className="relative inline-flex items-center gap-3 px-6 py-3 rounded-full border border-green-500/40 bg-green-500/10 backdrop-blur-md shadow-[0_0_30px_rgba(118,185,0,0.2)]">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-            <path d="M9.5 9.426v5.394c0 .39.216.748.558.932l4.5 2.476c.334.184.742.184 1.076 0l4.5-2.476c.342-.184.558-.542.558-.932V9.426c0-.39-.216-.748-.558-.932l-4.5-2.476a1.073 1.073 0 00-1.076 0l-4.5 2.476A1.074 1.074 0 009.5 9.426z" fill="#76B900" />
-            <path d="M3.5 6.426v5.394c0 .39.216.748.558.932l4.5 2.476c.334.184.742.184 1.076 0" stroke="#76B900" strokeWidth="1.5" strokeLinecap="round" />
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#76B900" viewBox="0 0 16 16">
+          <path d="M1.635 7.146S3.08 5.012 5.97 4.791v-.774C2.77 4.273 0 6.983 0 6.983s1.57 4.536 5.97 4.952v-.824c-3.23-.406-4.335-3.965-4.335-3.965M5.97 9.475v.753c-2.44-.435-3.118-2.972-3.118-2.972S4.023 5.958 5.97 5.747v.828h-.004c-1.021-.123-1.82.83-1.82.83s.448 1.607 1.824 2.07M6 2l-.03 2.017A7 7 0 0 1 6.252 4c3.637-.123 6.007 2.983 6.007 2.983s-2.722 3.31-5.557 3.31q-.39-.002-.732-.065v.883q.292.039.61.04c2.638 0 4.546-1.348 6.394-2.943.307.246 1.561.842 1.819 1.104-1.757 1.47-5.852 2.657-8.173 2.657a7 7 0 0 1-.65-.034V14H16l.03-12zm-.03 3.747v-.956a6 6 0 0 1 .282-.015c2.616-.082 4.332 2.248 4.332 2.248S8.73 9.598 6.743 9.598c-.286 0-.542-.046-.773-.123v-2.9c1.018.123 1.223.572 1.835 1.593L9.167 7.02s-.994-1.304-2.67-1.304a5 5 0 0 0-.527.031"/>
         </svg>
         <div>
             <span className="text-green-400 font-black text-sm tracking-[0.2em] uppercase block">NVIDIA</span>
@@ -83,24 +89,41 @@ const ArsenalSection = () => {
                             <LogitechBadge />
                         </div>
 
-                        {/* Right: PC Specs Card */}
-                        <div className="flex-1 w-full max-w-md">
+                        {/* Right: PC Specs Cards */}
+                        <div className="flex-1 w-full max-w-lg space-y-6">
+                            {/* Pune Specs */}
                             <div className="bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-3xl p-5 md:p-8 shadow-2xl relative overflow-hidden">
-                                {/* Top glow */}
                                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[1px] bg-gradient-to-r from-transparent via-green-500/50 to-transparent" />
-                                <h3 className="text-sm font-bold tracking-[0.3em] uppercase text-green-400 mb-6 flex items-center gap-2">
+                                <h3 className="text-sm font-bold tracking-[0.2em] uppercase text-green-400 mb-6 flex items-center gap-2">
                                     <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                                    PC Specifications
+                                    Pune Specifications
                                 </h3>
-                                <div className="space-y-4">
-                                    {pcSpecs.map((spec, i) => (
+                                <div className="space-y-3">
+                                    {puneSpecs.map((spec, i) => (
                                         <div key={i} className="flex items-center justify-between py-2 border-b border-white/5 last:border-0">
                                             <span className="text-gray-500 text-xs font-bold uppercase tracking-wider">{spec.label}</span>
-                                            <span className="text-white font-semibold text-sm">{spec.value}</span>
+                                            <span className="text-white font-semibold text-sm text-right max-w-[70%]">{spec.value}</span>
                                         </div>
                                     ))}
                                 </div>
-                                <div className="mt-6 pt-4 border-t border-white/5">
+                            </div>
+
+                            {/* Coimbatore Specs */}
+                            <div className="bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-3xl p-5 md:p-8 shadow-2xl relative overflow-hidden">
+                                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[1px] bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
+                                <h3 className="text-sm font-bold tracking-[0.2em] uppercase text-cyan-400 mb-6 flex items-center gap-2">
+                                    <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+                                    Coimbatore Specifications
+                                </h3>
+                                <div className="space-y-3">
+                                    {coimbatoreSpecs.map((spec, i) => (
+                                        <div key={i} className="flex items-center justify-between py-2 border-b border-white/5 last:border-0">
+                                            <span className="text-gray-500 text-xs font-bold uppercase tracking-wider">{spec.label}</span>
+                                            <span className="text-white font-semibold text-sm text-right max-w-[70%]">{spec.value}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                                <div className="mt-5 pt-4 border-t border-white/5">
                                     <div className="flex items-center gap-2 text-gray-500 text-xs">
                                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" /><path d="M8 21h8m-4-4v4" /></svg>
                                         <span>Peripherals by <strong className="text-cyan-400">Logitech</strong></span>

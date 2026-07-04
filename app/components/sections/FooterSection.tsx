@@ -50,10 +50,21 @@ const FooterSection = () => {
                         <span className="bg-black px-4 relative z-10">Powered By Elite Setups</span>
                         <div className="absolute top-1/2 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent z-0"></div>
                     </div>
-                    <div className="flex flex-wrap justify-center gap-12 md:gap-24 opacity-60 hover:opacity-100 transition-all duration-500">
-                        <h3 className="text-2xl tracking-widest font-bold text-gray-400 hover:text-green-500 transition-colors">NVIDIA</h3>
-                        <h3 className="text-2xl tracking-widest font-bold text-gray-400 hover:text-blue-500 transition-colors">LOGITECH G</h3>
-                        <h3 className="text-2xl tracking-widest font-bold text-gray-400 hover:text-orange-500 transition-colors">ROG</h3>
+                    <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24 transition-all duration-500">
+                        <div className="group cursor-pointer">
+                            <img 
+                                src="https://cdn.worldvectorlogo.com/logos/nvidia.svg" 
+                                alt="NVIDIA" 
+                                className="h-16 md:h-20 w-auto drop-shadow-[0_0_15px_rgba(118,185,0,0.3)] transition-all duration-300"
+                            />
+                        </div>
+                        <div className="group cursor-pointer">
+                            <img 
+                                src="https://cdn.worldvectorlogo.com/logos/logitech-gaming.svg" 
+                                alt="Logitech G" 
+                                className="h-12 md:h-16 w-auto drop-shadow-[0_0_15px_rgba(0,184,252,0.3)] transition-all duration-300"
+                            />
+                        </div>
                     </div>
                 </div>
 

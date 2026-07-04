@@ -34,11 +34,14 @@ const RefuelSection = () => {
 
     const getTemplateMessage = () => {
         const locString = location === 'pune' ? 'Pune (Viman Nagar)' : 'Coimbatore';
+        const currentDate = new Date().toLocaleDateString();
         return `Hi Boomer's Team! I'd like to book for Happy Hours.
+Date: ${currentDate}
 Location: ${locString}
 Name: ${formData.name}
 Number of People: ${formData.people}
-Preference: ${formData.preference}`;
+Preference: ${formData.preference}
+@8122210532`;
     };
 
     const handleContinue = () => {
@@ -108,7 +111,7 @@ Preference: ${formData.preference}`;
                 <div className="flex flex-col lg:flex-row gap-12 items-center relative z-10">
                     <div className="flex-1">
                         <p className="text-gray-300/90 mb-8 text-lg md:text-xl leading-relaxed font-light tracking-wide">
-                            Buy one hour of gaming and get to play two hours! Level up your weekdays with our exclusive 1+1 deals on PC and Console gaming.
+                            Enjoy Happy Hours every Monday, Tuesday & Wednesday. Purchase 1 hour of gaming and get 1 extra hour FREE on both PC and Console gaming.
                         </p>
                         <ul className="space-y-4 text-sm md:text-base text-gray-300/80 mb-10 font-normal">
                             <li className="flex items-center gap-4">

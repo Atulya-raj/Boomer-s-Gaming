@@ -33,14 +33,17 @@ function CheckoutForm() {
         setIsSubmitting(true);
 
         const locString = location === 'pune' ? 'Pune (Viman Nagar)' : 'Coimbatore';
+        const currentDate = new Date().toLocaleDateString();
         // Construct the WhatsApp message
         const message = `*New Event Booking Inquiry*\n\n` +
+            `*Date:* ${currentDate}\n` +
             `*Location:* ${locString}\n` +
             `*Booking Type:* ${bookingType}\n` +
             `*Name:* ${formData.name}\n` +
             `*WhatsApp Number:* ${formData.phone}\n` +
             `*Total People:* ${formData.peopleCount}\n` +
-            `*Description:* ${formData.description || 'N/A'}`;
+            `*Description:* ${formData.description || 'N/A'}\n` +
+            `@8122210532`;
 
         const whatsappUrl = "https://chat.whatsapp.com/DgRDyrOC2EKGjypHWazXiF?mode=gi_t";
 

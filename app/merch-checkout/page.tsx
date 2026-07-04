@@ -33,14 +33,17 @@ function CheckoutForm() {
         setIsSubmitting(true);
 
         const locString = location === 'pune' ? 'Pune (Viman Nagar)' : 'Coimbatore';
+        const currentDate = new Date().toLocaleDateString();
         // Construct the WhatsApp message
         const message = `*New Merch Inquiry*\n\n` +
+            `*Date:* ${currentDate}\n` +
             `*Location:* ${locString}\n` +
             `*Item:* ${itemOfInterest}\n` +
             `*Name:* ${formData.name}\n` +
             `*Phone:* ${formData.phone}\n` +
             `*Email:* ${formData.email}\n` +
-            `*Description:* ${formData.description}`;
+            `*Description:* ${formData.description}\n` +
+            `@8122210532`;
 
         const whatsappUrl = "https://chat.whatsapp.com/DgRDyrOC2EKGjypHWazXiF?mode=gi_t";
 
